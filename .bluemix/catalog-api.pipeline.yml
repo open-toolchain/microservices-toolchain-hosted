@@ -35,11 +35,6 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-  - name: Gate
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: Store Unit Test and Code Coverage Checks
-    APPLICATION_NAME: ${CF_APP_NAME}
 - name: DEV
   inputs:
   - type: job
@@ -192,6 +187,25 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
+- name: GATE
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: LOGICAL_APP_NAME
+    value: ${CF_APP_NAME}
+    type: text
+  - name: BUILD_PREFIX
+    value: master
+    type: text
+  jobs:
+  - name: Gate
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_devops_gate
+    CRITERIA: Store Unit Test, Functional Tests, and Code Coverage Checks
 - name: PROD
   inputs:
   - type: job
