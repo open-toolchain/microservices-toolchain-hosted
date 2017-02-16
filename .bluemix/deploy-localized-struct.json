@@ -1,0 +1,71 @@
+{
+    "title": "$deploy.title",
+    "description": "$deploy.description",
+    "longDescription": "$deploy.longDescription",
+    "properties": {
+        "orders-app-name": {
+            "description": "$deploy.appDescription1"
+        },
+       "catalog-app-name": {
+            "description": "$deploy.appDescription2"
+        },
+       "ui-app-name": {
+            "description": "$deploy.appDescription3"
+        }
+    },
+    "form": [
+       {
+       },
+       {
+          "title": "$deploy.appName1"
+        },
+        {
+          "title": "$deploy.appName2"
+        },
+        {
+          "title": "$deploy.appName3"
+        },
+        {
+            "items": [
+                {
+                },
+                {
+                  "title": "$region"
+                },
+                {
+                  "title": "$organization"
+                },
+                {
+                  "title": "$space"
+                },
+                {
+                  "title": "$devStage"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "title": "$testStage"
+                },
+                {
+                },
+                {
+                },
+                {
+                },
+                {
+                  "title": "$prodStage"
+                },
+                {
+                },
+                {
+                },
+                {
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+{
+    "title": "$github.title",
+    "description": "$github.description",
+    "longDescription": "$github.longDescription",
+    "properties": {
+    },
+    "form": [
+      {
+      },
+      {
+        "items": [
+            {
+              "title": "$github.sourceRepository"
+            },
+            {
+            },
+            {
+              "title": "$github.targetRepository"
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            },
+            {
+            }
+        ]
+      }
+    ] 
+}

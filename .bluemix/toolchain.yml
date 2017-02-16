@@ -1,0 +1,166 @@
+name: "icdemo1"
+description: "With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and alert notification.\n\nThe Catalog and Orders API are backed by a Cloudant store. As part of deploying this application a no cost Cloudant service instance will be created. For more information and terms, see the [Bluemix catalog](/catalog/services/cloudant-nosql-db/).\n\nThis toolchain uses tools that are part of the Continuous Delivery service. If an instance of that service isn't already in your organization, when you click **Create**, it is automatically added at no cost to you. For more information and terms, see the [Bluemix catalog](/catalog/services/continuous-delivery/).\n\nTo get started, click **Create**."
+default_locale: en
+locales: 
+  $ref: locales.yml
+image: data:image/svg+xml;base64,$file(toolchain.svg?localize,base64)
+icon: data:image/svg+xml;base64,$file(icon.svg,base64)
+required:
+ - deploy
+ - github
+
+# Github repos
+catalog-api-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "{{github.parameters.catalog-api-repo_name}}"
+    repo_url: "{{github.parameters.catalog-api-repo_url}}"
+    type: clone
+    has_issues: false
+  hidden: [form, description]
+
+orders-api-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "{{github.parameters.orders-api-repo_name}}"
+    repo_url: "{{github.parameters.orders-api-repo_url}}"
+    type: clone
+    has_issues: false
+  hidden: [form, description]
+
+ui-repo:
+  service_id: githubpublic
+  parameters:
+    repo_name: "{{github.parameters.ui-repo_name}}"
+    repo_url: "{{github.parameters.ui-repo_url}}"
+    type: clone
+    has_issues: true
+  hidden: [form, description]
+
+# Pipelines
+ui-build:
+  service_id: pipeline
+  parameters:
+    name: "ui-{{name}}"
+    ui-pipeline: true
+    configuration:
+      content: $file(ui.pipeline.yml)
+      env:
+        SAUCE_LABS: "test"
+        UI_REPO: "ui-repo"
+        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
+        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
+        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
+        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
+        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
+        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
+        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
+        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
+        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
+        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      execute: true
+    services: ["ui-repo", "test"]
+  hidden: [form, description]
+
+catalog-api-build:
+  service_id: pipeline
+  parameters:
+    name: "catalog-api-{{name}}"
+    configuration:
+      content: $file(catalog-api.pipeline.yml)
+      env:
+        SAUCE_LABS: "test"
+        CATALOG_API_REPO: "catalog-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
+        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
+        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
+        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
+        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
+        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
+        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
+        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
+        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
+        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      execute: true
+    services: ["catalog-api-repo", "test"]
+  hidden: [form, description]
+
+orders-api-build:
+  service_id: pipeline
+  parameters:
+    name: "orders-api-{{name}}"
+    configuration:
+      content: $file(orders-api.pipeline.yml)
+      env:
+        SAUCE_LABS: "test"
+        ORDER_API_REPO: "orders-api-repo"
+        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
+        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
+        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
+        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
+        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
+        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
+        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
+        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
+        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
+        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
+      execute: true
+    services: ["orders-api-repo", "test"]
+
+deploy-plans:
+  parameters:
+    dashboard_url: https://dev-console.stage1.ng.bluemix.net/devops/continuous-release
+    label: deploy plans
+    lifecyclePhase: DELIVER
+    name: "deploy plans"
+    type: Deploy Plans
+  service_id: customtool
+
+multi-app-pipeline:
+  parameters:
+    label: multiapp
+    lifecyclePhase: DELIVER
+    name: multiapp
+    type: MultiApp pipeline
+  service_id: customtool
+
+alerting:
+  service_id: pagerduty
+
+dra:
+  service_id: draservicebroker
+
+messaging:
+  service_id: slack
+
+test:
+  service_id: saucelabs
+
+webide:
+  service_id: orion
+
+#Deployment
+deploy:
+  schema:
+    $ref: deploy.json
+  service-category: pipeline
+  parameters:
+    dev-space: dev
+    qa-space: qa
+    prod-space: prod
+    orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
+    catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
+    ui-app-name: "{{ui-repo.parameters.repo_name}}"
+
+#Github
+github:
+  schema:
+    $ref: github.json
+  service-category: githubpublic
+  parameters:
+    catalog-api-repo_name: "catalog-api-{{name}}"
+    catalog-api-repo_url: https://github.com/open-toolchain/Microservices_CatalogAPI
+    orders-api-repo_name: "orders-api-{{name}}"
+    orders-api-repo_url: https://github.com/open-toolchain/Microservices_OrdersAPI
+    ui-repo_name: "ui-{{name}}"
+    ui-repo_url: https://github.com/open-toolchain/Microservices_UI
