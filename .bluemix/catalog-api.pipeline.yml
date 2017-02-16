@@ -11,9 +11,6 @@ stages:
   - name: LOGICAL_APP_NAME
     value: ${CF_APP_NAME}
     type: text
-  - name: LOGICAL_ENV_NAME
-    value: master
-    type: text
   - name: BUILD_PREFIX
     value: master
     type: text
@@ -24,7 +21,6 @@ stages:
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_upload_results
     APPLICATION_NAME: ${CF_APP_NAME}
-    ENVIRONMENT: master
     LIFE_CYCLE_STAGE_SELECT: unittest
     ADDITIONAL_LIFE_CYCLE_STAGE_SELECT: code
     LOG_FILE: tests/server/mochatest.json
@@ -44,7 +40,6 @@ stages:
     extension_id: ibm.devops.services.pipeline.dra_devops_gate
     CRITERIA: Store Unit Test and Code Coverage Checks
     APPLICATION_NAME: ${CF_APP_NAME}
-    ENVIRONMENT: master
 - name: DEV
   inputs:
   - type: job

@@ -14,9 +14,6 @@ stages:
   - name: BUILD_PREFIX
     value: master
     type: text
-  - name: LOGICAL_ENV_NAME
-    value: master
-    type: text
   jobs:
   - name: Build
     type: builder
