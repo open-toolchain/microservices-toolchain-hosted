@@ -84,7 +84,7 @@ stages:
     value: master
     type: text
   - name: LOGICAL_ENV_NAME
-    value: ${QA_SPACE_NAME}
+    value: STAGING
     type: text
   jobs:
   - name: Deploy
@@ -150,7 +150,6 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-    ENVIRONMENT: ${QA_SPACE_NAME}
 - name: PROD
   inputs:
   - type: job
@@ -172,7 +171,7 @@ stages:
     value: ${CF_APP_NAME}
     type: text
   - name: LOGICAL_ENV_NAME
-    value: ${PROD_SPACE_NAME}
+    value: PRODUCTION
     type: text
   jobs:
   - name: Blue/Green Deploy
