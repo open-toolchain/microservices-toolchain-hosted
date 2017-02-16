@@ -1,13 +1,24 @@
 [
   {
-    "name":"Store Unit Test and Code Coverage Checks",
-    "description": "Composite Policy to check both Unit Tests and Code Coverage.",
+    "name":"Store Unit Test, Functional Tests, and Code Coverage Checks",
+    "description": "Composite Policy to check Unit Tests, Functional Tests, and Code Coverage.",
     "rules":[
       {
         "name": "Unit Test Rule",
         "description": "Unit Test Rule",
         "format":"mocha",
         "stage":"unittest",
+        "percentPass":100,
+        "regressionCheck":true,
+        "criticalTests":[
+
+        ]
+      },
+      {
+        "name": "Functional Test Rule",
+        "description": "Functional Test Rule",
+        "format":"mocha",
+        "stage":"fvt",
         "percentPass":100,
         "regressionCheck":true,
         "criticalTests":[

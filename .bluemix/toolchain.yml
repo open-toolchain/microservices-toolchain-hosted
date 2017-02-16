@@ -129,6 +129,7 @@ alerting:
 
 dra:
   service_id: draservicebroker
+  include: dra.yml
 
 messaging:
   service_id: slack
