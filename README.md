@@ -5,6 +5,9 @@ Get started with this sample, which is an online store that consists of three mi
 ###To get started, click this button:
 [![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
  
+[![Create Toolchain](https://dev-console.stage1.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://dev-console.stage1.ng.bluemix.net/devops/setup/deploy/) **YS1:DEV**
+[![Create Toolchain](https://console.stage1.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.stage1.ng.bluemix.net/devops/setup/deploy/) **YS1:INT**
+
 ---
 ###Learn more
 
