@@ -34,5 +34,22 @@
         "regressionCheck":true
       }
     ]
+  },
+  {
+    "name":"Store Functional Tests Checks",
+    "description": "Composite Policy to check Functional Tests.",
+    "rules":[
+      {
+        "name": "Functional Test Rule",
+        "description": "Functional Test Rule",
+        "format":"mocha",
+        "stage":"fvt",
+        "percentPass":100,
+        "regressionCheck":true,
+        "criticalTests":[
+
+        ]
+      }
+    ]
   }
 ]
