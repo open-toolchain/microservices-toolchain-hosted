@@ -71,6 +71,10 @@ stages:
     value: '80'
     type: text
   jobs:
+  - name: Staging Gate
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_devops_gate
+    CRITERIA: Store Unit Test and Code Coverage Checks
   - name: Deploy
     type: deployer
     target:
