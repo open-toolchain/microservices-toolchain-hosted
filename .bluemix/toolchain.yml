@@ -3,7 +3,8 @@ description: "With this cloud-native toolchain, you use a sample to create an on
 default_locale: en
 locales: 
   $ref: locales.yml
-image: data:image/svg+xml;base64,$file(toolchain.svg?localize,base64)
+image: data:image/png;base64,$file(toolchain-ic17.png,base64)
+# image: data:image/svg+xml;base64,$file(toolchain.svg?localize,base64)
 icon: data:image/svg+xml;base64,$file(icon.svg,base64)
 required:
  - deploy
