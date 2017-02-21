@@ -108,6 +108,12 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: SAUCE_USERNAME
+    value: {{test.parameters.username}}
+    type: text
+  - name: SAUCE_ACCESS_KEY
+    value: {{test.parameters.key}}
+    type: text
   - name: LOGICAL_APP_NAME
     value: ${CF_APP_NAME}
     type: text

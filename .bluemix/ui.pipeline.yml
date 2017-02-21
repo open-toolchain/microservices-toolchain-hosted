@@ -69,6 +69,15 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: SAUCE_USERNAME
+    value: {{test.parameters.username}}
+    type: text
+  - name: SAUCE_ACCESS_KEY
+    value: {{test.parameters.key}}
+    type: text
+  - name: HOST
+    value: ondemand.saucelabs.com
+    type: text
   - name: PORT
     value: '80'
     type: text
