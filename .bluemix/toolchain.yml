@@ -50,9 +50,6 @@ ui-build:
         SAUCE_LABS: "test"
         UI_REPO: "ui-repo"
         CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
         QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
         QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
         QA_REGION_ID: "{{deploy.parameters.qa-region}}"
@@ -73,9 +70,6 @@ catalog-api-build:
         SAUCE_LABS: "test"
         CATALOG_API_REPO: "catalog-api-repo"
         CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
         QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
         QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
         QA_REGION_ID: "{{deploy.parameters.qa-region}}"
@@ -96,9 +90,6 @@ orders-api-build:
         SAUCE_LABS: "test"
         ORDER_API_REPO: "orders-api-repo"
         CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-        DEV_SPACE_NAME: "{{deploy.parameters.dev-space}}"
-        DEV_ORG_NAME: "{{deploy.parameters.dev-organization}}"
-        DEV_REGION_ID: "{{deploy.parameters.dev-region}}"
         QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
         QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
         QA_REGION_ID: "{{deploy.parameters.qa-region}}"
@@ -110,7 +101,7 @@ orders-api-build:
 
 deploy-plans:
   parameters:
-    dashboard_url: https://dev-console.stage1.ng.bluemix.net/devops/continuous-release
+    dashboard_url: /devops/continuous-release
     label: deploy plans
     lifecyclePhase: DELIVER
     name: "deploy plans"

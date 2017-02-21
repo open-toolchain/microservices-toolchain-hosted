@@ -13,7 +13,6 @@ $deploy.appDescription3: "Der Name der App für die Benutzerschnittstelle, über
 $region: "Region"
 $organization: "Organisation"
 $space: "Bereich"
-$devStage: "Entwicklungsphase"
 $prodStage: "Produktionsphase"
 $testStage: "Testphase"
 $github.title: "Microservices-Entwicklungsphase"

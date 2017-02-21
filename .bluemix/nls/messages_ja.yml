@@ -13,7 +13,6 @@ $deploy.appDescription3: "Orders API と Catalog API を呼び出す UI のア�
 $region: "地域"
 $organization: "組織"
 $space: "スペース"
-$devStage: "開発ステージ"
 $prodStage: "実動ステージ"
 $testStage: "テスト・ステージ"
 $github.title: "Microservices のデプロイメント・ステージ"

@@ -13,7 +13,6 @@ $deploy.appDescription3: "O nome do app para a UI que chama as APIs de Pedidos e
 $region: "Região"
 $organization: "Organização"
 $space: "Espaço"
-$devStage: "Estágio de desenvolvimento"
 $prodStage: "Estágio de produção"
 $testStage: "Estágio de Teste"
 $github.title: "Estágio de implementação de microsserviços"

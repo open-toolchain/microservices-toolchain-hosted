@@ -13,7 +13,6 @@ $deploy.appDescription3: "El nombre de la aplicación de la IU que llama a las A
 $region: "Región"
 $organization: "Organización"
 $space: "Espacio"
-$devStage: "Fase de desarrollo"
 $prodStage: "Fase de producción"
 $testStage: "Fase de prueba"
 $github.title: "Fase de despliegue de microservicios"

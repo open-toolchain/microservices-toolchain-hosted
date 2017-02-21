@@ -8,18 +8,6 @@
     "longDescription": "The Delivery Pipeline automates continuous deployment.",
     "type": "object",
     "properties": {
-        "dev-region": {
-            "description": "The bluemix region",
-            "type": "string"
-        },
-        "dev-organization": {
-            "description": "The bluemix org",
-            "type": "string"
-        },
-       "dev-space": {
-            "description": "The bluemix space",
-            "type": "string"
-        },
         "qa-region": {
             "description": "The bluemix region",
             "type": "string"
@@ -57,7 +45,7 @@
             "type": "string"
         }
     },
-    "required": ["dev-region", "dev-organization", "dev-space", "qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
+    "required": ["qa-region", "qa-organization", "qa-space", "prod-region", "prod-organization", "prod-space", "orders-app-name", "catalog-app-name", "ui-app-name"],
     "form": [
        {
           "type": "validator",
@@ -101,23 +89,6 @@
                 {
                   "type": "label",
                   "title": "Space"
-                },
-                {
-                  "type": "label",
-                  "title": "Development stage"
-                },
-                {
-                  "type": "select",
-                  "key": "dev-region"
-                },
-                {
-                  "type": "select",
-                  "key": "dev-organization"
-                },
-                {
-                  "type": "select",
-                  "key": "dev-space",
-                  "readonly": false
                 },
                 {
                   "type": "label",
