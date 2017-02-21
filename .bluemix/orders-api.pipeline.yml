@@ -156,25 +156,6 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-- name: GATE
-  inputs:
-  - type: job
-    stage: BUILD
-    job: Build
-  triggers:
-  - type: stage
-  properties:
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
-  jobs:
-  - name: Gate
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: Store Functional Tests Checks
 - name: PROD
   inputs:
   - type: job
@@ -199,6 +180,10 @@ stages:
     value: PRODUCTION
     type: text
   jobs:
+  - name: Prod Gate
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_devops_gate
+    CRITERIA: Store Functional Tests Checks
   - name: Blue/Green Deploy
     type: deployer
     target:
