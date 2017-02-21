@@ -42,7 +42,7 @@
       {
         "name": "Functional Test Rule",
         "description": "Functional Test Rule",
-        "format":"mocha",
+        "format":"xunit",
         "stage":"fvt",
         "percentPass":100,
         "regressionCheck":true,
