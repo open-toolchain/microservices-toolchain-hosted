@@ -18,7 +18,7 @@ stages:
   - name: Build
     type: builder
     artifact_dir: ''
-- name: TEST
+- name: STAGING
   inputs:
   - type: job
     stage: BUILD

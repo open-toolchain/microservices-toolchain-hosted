@@ -17,7 +17,7 @@ stages:
   jobs:
   - name: Build
     type: builder
-- name: TEST
+- name: STAGING
   inputs:
   - type: job
     stage: BUILD

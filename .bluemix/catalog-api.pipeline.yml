@@ -35,7 +35,7 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-- name: TEST
+- name: STAGING
   inputs:
   - type: job
     stage: BUILD
