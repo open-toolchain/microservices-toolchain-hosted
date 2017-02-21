@@ -14,9 +14,6 @@ stages:
   - name: BUILD_PREFIX
     value: master
     type: text
-  - name: LOGICAL_ENV_NAME
-    value: master
-    type: text
   jobs:
   - name: Build
     type: builder
@@ -72,6 +69,15 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
+  - name: SAUCE_USERNAME
+    value: {{test.parameters.username}}
+    type: text
+  - name: SAUCE_ACCESS_KEY
+    value: {{test.parameters.key}}
+    type: text
+  - name: HOST
+    value: ondemand.saucelabs.com
+    type: text
   - name: PORT
     value: '80'
     type: text
@@ -82,7 +88,7 @@ stages:
     value: master
     type: text
   - name: LOGICAL_ENV_NAME
-    value: ${QA_SPACE_NAME}
+    value: STAGING
     type: text
   jobs:
   - name: Deploy
@@ -147,7 +153,25 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-    ENVIRONMENT: ${QA_SPACE_NAME}
+- name: GATE
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: LOGICAL_APP_NAME
+    value: ${CF_APP_NAME}
+    type: text
+  - name: BUILD_PREFIX
+    value: master
+    type: text
+  jobs:
+  - name: Gate
+    type: tester
+    extension_id: ibm.devops.services.pipeline.dra_devops_gate
+    CRITERIA: Store Functional Tests Checks
 - name: PROD
   inputs:
   - type: job
@@ -169,7 +193,7 @@ stages:
     value: ${CF_APP_NAME}
     type: text
   - name: LOGICAL_ENV_NAME
-    value: ${PROD_SPACE_NAME}
+    value: PRODUCTION
     type: text
   jobs:
   - name: Blue/Green Deploy
