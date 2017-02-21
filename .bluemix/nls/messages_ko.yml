@@ -13,7 +13,6 @@ $deploy.appDescription3: "순서 API와 카탈로그 API를 호출하는 UI의 �
 $region: "지역"
 $organization: "조직"
 $space: "영역"
-$devStage: "개발 단계"
 $prodStage: "프로덕션 단계"
 $testStage: "테스트 단계"
 $github.title: "마이크로서비스 배치 단계"

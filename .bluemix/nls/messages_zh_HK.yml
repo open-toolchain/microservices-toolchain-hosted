@@ -13,7 +13,6 @@ $deploy.appDescription3: "呼叫「訂單 API」及「型錄 API」的使用者�
 $region: "區域"
 $organization: "組織"
 $space: "空間"
-$devStage: "開發階段"
 $prodStage: "正式作業階段"
 $testStage: "測試階段"
 $github.title: "微服務部署階段"

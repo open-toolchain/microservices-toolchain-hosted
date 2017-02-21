@@ -13,7 +13,6 @@ $deploy.appDescription3: "11:The name of the app for the UI that calls the Order
 $region: "12:Region"
 $organization: "13:Organization"
 $space: "14:Space"
-$devStage: "15:Development stage"
 $prodStage: "16:Production stage"
 $testStage: "17:Test stage"
 $github.title: "18:Microservices deployment stage"

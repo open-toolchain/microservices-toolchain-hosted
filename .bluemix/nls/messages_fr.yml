@@ -13,7 +13,6 @@ $deploy.appDescription3: "Nom de l'appli de l'interface utilisateur qui appelle 
 $region: "Région"
 $organization: "Organisation"
 $space: "Espace"
-$devStage: "Etape de développement"
 $prodStage: "Etape de production"
 $testStage: "Etape de test"
 $github.title: "Etape de déploiement de microservices"

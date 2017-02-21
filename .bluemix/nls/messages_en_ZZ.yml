@@ -13,7 +13,6 @@ $deploy.appDescription3: "[G'Ｔｈｅ ｎａｍｅ ｏｆ ｔｈｅ ａpp for t
 $region: "[G'Regionฏูİı｜]"
 $organization: "[G'Ｏｒganizationฏูİı｜]"
 $space: "[G'Spaceฏูİı｜]"
-$devStage: "[G'Ｄｅｖｅｌopment stageฏูİı｜]"
 $prodStage: "[G'Ｐｒｏｄｕction stageฏูİı｜]"
 $testStage: "[G'Ｔest stageฏูİı｜]"
 $github.title: "[G'Ｍｉｃｒｏｓｅｒｖices deployment stageฏูİı｜]"

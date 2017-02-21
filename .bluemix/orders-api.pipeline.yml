@@ -18,46 +18,7 @@ stages:
   - name: Build
     type: builder
     artifact_dir: ''
-- name: DEV
-  inputs:
-  - type: job
-    stage: BUILD
-    job: Build
-  triggers:
-  - type: stage
-  properties:
-  - name: CF_APP_NAME
-    value: undefined
-    type: text
-  - name: APP_URL
-    value: undefined
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: ${DEV_SPACE_NAME}
-    type: text
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
-  jobs:
-  - name: Deploy
-    type: deployer
-    target:
-      region_id: ${DEV_REGION_ID}
-      organization: ${DEV_ORG_NAME}
-      space: ${DEV_SPACE_NAME}
-      application: ${CF_APP_NAME}
-    script: |-
-      #!/bin/bash
-      cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
-      # Push app
-      export CF_APP_NAME="dev-$CF_APP"
-      cf push "${CF_APP_NAME}"
-      # View logs
-      #cf logs "${CF_APP_NAME}" --recent
-- name: TEST
+- name: STAGING
   inputs:
   - type: job
     stage: BUILD

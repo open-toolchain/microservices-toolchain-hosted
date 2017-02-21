@@ -13,7 +13,6 @@ $deploy.appDescription3: "The name of the app for the UI that calls the Orders a
 $region: "Region~otc-ui508"
 $organization: "Organization~otc-ui509"
 $space: "Space~otc-ui510"
-$devStage: "Development stage~otc-ui511"
 $prodStage: "Production stage~otc-ui512"
 $testStage: "Test stage~otc-ui513"
 $github.title: "Microservices deployment stage~otc-ui514"
