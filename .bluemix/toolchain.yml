@@ -102,23 +102,6 @@ orders-api-build:
       execute: true
     services: ["orders-api-repo", "test"]
 
-deploy-plans:
-  parameters:
-    dashboard_url: /devops/continuous-release
-    label: deploy plans
-    lifecyclePhase: DELIVER
-    name: "deploy plans"
-    type: Deploy Plans
-  service_id: customtool
-
-multi-app-pipeline:
-  parameters:
-    label: multiapp
-    lifecyclePhase: DELIVER
-    name: multiapp
-    type: MultiApp pipeline
-  service_id: customtool
-
 alerting:
   service_id: pagerduty
 
