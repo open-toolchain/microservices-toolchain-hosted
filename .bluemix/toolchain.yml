@@ -18,6 +18,7 @@ catalog-api-repo:
     repo_url: "{{github.parameters.catalog-api-repo_url}}"
     type: clone
     has_issues: false
+    enable_traceability: true
   hidden: [form, description]
 
 orders-api-repo:
@@ -27,6 +28,7 @@ orders-api-repo:
     repo_url: "{{github.parameters.orders-api-repo_url}}"
     type: clone
     has_issues: false
+    enable_traceability: true
   hidden: [form, description]
 
 ui-repo:
@@ -36,6 +38,7 @@ ui-repo:
     repo_url: "{{github.parameters.ui-repo_url}}"
     type: clone
     has_issues: true
+    enable_traceability: true
   hidden: [form, description]
 
 # Pipelines
