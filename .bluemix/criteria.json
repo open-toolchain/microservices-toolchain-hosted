@@ -55,8 +55,8 @@
         "description": "Code Coverage Rule",
         "format":"istanbul",
         "stage":"code",
-        "codeCoverage":80,
-        "regressionCheck":true
+        "codeCoverage":60,
+        "regressionCheck":false
       }
     ]
   },
