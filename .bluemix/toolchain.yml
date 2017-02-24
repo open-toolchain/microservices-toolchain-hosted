@@ -8,14 +8,18 @@ image: data:image/png;base64,$file(toolchain-ic17.png,base64)
 icon: data:image/svg+xml;base64,$file(icon.svg,base64)
 required:
  - deploy
- - github
+ - repos
+
+toolchain:
+  template:
+     getting_started: "This is a placeholder for the scenario getting started message."
 
 # Github repos
 catalog-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.catalog-api-repo_name}}"
-    repo_url: "{{github.parameters.catalog-api-repo_url}}"
+    repo_name: "{{repos.parameters.catalog-api-repo_name}}"
+    repo_url: "{{repos.parameters.catalog-api-repo_url}}"
     type: clone
     has_issues: false
     enable_traceability: true
@@ -24,8 +28,8 @@ catalog-api-repo:
 orders-api-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.orders-api-repo_name}}"
-    repo_url: "{{github.parameters.orders-api-repo_url}}"
+    repo_name: "{{repos.parameters.orders-api-repo_name}}"
+    repo_url: "{{repos.parameters.orders-api-repo_url}}"
     type: clone
     has_issues: false
     enable_traceability: true
@@ -34,8 +38,8 @@ orders-api-repo:
 ui-repo:
   service_id: githubpublic
   parameters:
-    repo_name: "{{github.parameters.ui-repo_name}}"
-    repo_url: "{{github.parameters.ui-repo_url}}"
+    repo_name: "{{repos.parameters.ui-repo_name}}"
+    repo_url: "{{repos.parameters.ui-repo_url}}"
     type: clone
     has_issues: true
     enable_traceability: true
@@ -132,9 +136,9 @@ deploy:
     ui-app-name: "{{ui-repo.parameters.repo_name}}"
 
 #Github
-github:
+repos:
   schema:
-    $ref: github.json
+    $ref: repos.json
   service-category: githubpublic
   parameters:
     catalog-api-repo_name: "catalog-api-{{name}}"
