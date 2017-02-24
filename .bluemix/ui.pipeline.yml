@@ -32,10 +32,10 @@ stages:
     value: undefined
     type: text
   - name: SAUCE_USERNAME
-    value: {{test.parameters.username}}
+    value: {{services.test.parameters.username}}
     type: text
   - name: SAUCE_ACCESS_KEY
-    value: {{test.parameters.key}}
+    value: {{services.test.parameters.key}}
     type: text
   - name: HOST
     value: ondemand.saucelabs.com

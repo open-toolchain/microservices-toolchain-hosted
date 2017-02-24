@@ -1,149 +1,170 @@
-name: "icdemo1"
-description: "With this cloud-native toolchain, you use a sample to create an online store that consists of three microservices: a Catalog API, an Orders API, and a UI that calls both of the APIs. The toolchain is preconfigured for continuous delivery, source control, blue-green deployment, functional testing, issue tracking, online editing, and alert notification.\n\nThe Catalog and Orders API are backed by a Cloudant store. As part of deploying this application a no cost Cloudant service instance will be created. For more information and terms, see the [Bluemix catalog](/catalog/services/cloudant-nosql-db/).\n\nThis toolchain uses tools that are part of the Continuous Delivery service. If an instance of that service isn't already in your organization, when you click **Create**, it is automatically added at no cost to you. For more information and terms, see the [Bluemix catalog](/catalog/services/continuous-delivery/).\n\nTo get started, click **Create**."
+version: '2'
 default_locale: en
-locales: 
+locales:
   $ref: locales.yml
-image: data:image/png;base64,$file(toolchain-ic17.png,base64)
-# image: data:image/svg+xml;base64,$file(toolchain.svg?localize,base64)
-icon: data:image/svg+xml;base64,$file(icon.svg,base64)
-required:
- - deploy
- - repos
+template:
+  name: Microservices toolchain
+  description: >-
+    With this cloud-native toolchain, you use a sample to create an online store
+    that consists of three microservices: a Catalog API, an Orders API, and a UI
+    that calls both of the APIs. The toolchain is preconfigured for continuous
+    delivery, source control, blue-green deployment, functional testing, issue
+    tracking, online editing, and alert notification.
 
+
+    The Catalog and Orders API are backed by a Cloudant store. As part of
+    deploying this application a no cost Cloudant service instance will be
+    created. For more information and terms, see the [Bluemix
+    catalog](/catalog/services/cloudant-nosql-db/).
+
+
+    This toolchain uses tools that are part of the Continuous Delivery service.
+    If an instance of that service isn't already in your organization, when you
+    click **Create**, it is automatically added at no cost to you. For more
+    information and terms, see the [Bluemix
+    catalog](/catalog/services/continuous-delivery/).
+
+
+    To get started, click **Create**.
+  header: '![](toolchain-ic17.png "header image")'
+  icon: icon.svg
+  required:
+    - ui-build
+    - catalog-api-build
+    - orders-api-build
+    - catalog-api-repo
+    - orders-api-repo
+    - ui-repo
+  info:
+    git url: >-
+      [https://github.com/open-toolchain/microservices-toolchain-hosted](https://github.com/open-toolchain/microservices-toolchain-hosted)
+    git branch: >-
+      [master](https://github.com/open-toolchain/microservices-toolchain-hosted/tree/master)
 toolchain:
   template:
-     getting_started: "This is a placeholder for the scenario getting started message."
-
-# Github repos
-catalog-api-repo:
-  service_id: hostedgit
-  parameters:
-    repo_name: "{{repos.parameters.catalog-api-repo_name}}"
-    repo_url: "{{repos.parameters.catalog-api-repo_url}}"
-    type: clone
-    has_issues: false
-    enable_traceability: true
-  hidden: [form, description]
-
-orders-api-repo:
-  service_id: hostedgit
-  parameters:
-    repo_name: "{{repos.parameters.orders-api-repo_name}}"
-    repo_url: "{{repos.parameters.orders-api-repo_url}}"
-    type: clone
-    has_issues: false
-    enable_traceability: true
-  hidden: [form, description]
-
-ui-repo:
-  service_id: hostedgit
-  parameters:
-    repo_name: "{{repos.parameters.ui-repo_name}}"
-    repo_url: "{{repos.parameters.ui-repo_url}}"
-    type: clone
-    has_issues: true
-    enable_traceability: true
-  hidden: [form, description]
-
-# Pipelines
-ui-build:
-  service_id: pipeline
-  parameters:
-    name: "ui-{{name}}"
-    ui-pipeline: true
-    configuration:
-      content: $file(ui.pipeline.yml)
-      env:
-        SAUCE_LABS: "test"
-        UI_REPO: "ui-repo"
-        CF_APP_NAME: "{{deploy.parameters.ui-app-name}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
-      execute: true
-    services: ["ui-repo", "test"]
-  hidden: [form, description]
-
-catalog-api-build:
-  service_id: pipeline
-  parameters:
-    name: "catalog-api-{{name}}"
-    configuration:
-      content: $file(catalog-api.pipeline.yml)
-      env:
-        SAUCE_LABS: "test"
-        CATALOG_API_REPO: "catalog-api-repo"
-        CF_APP_NAME: "{{deploy.parameters.catalog-app-name}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
-      execute: true
-    services: ["catalog-api-repo", "test"]
-  hidden: [form, description]
-
-orders-api-build:
-  service_id: pipeline
-  parameters:
-    name: "orders-api-{{name}}"
-    configuration:
-      content: $file(orders-api.pipeline.yml)
-      env:
-        SAUCE_LABS: "test"
-        ORDER_API_REPO: "orders-api-repo"
-        CF_APP_NAME: "{{deploy.parameters.orders-app-name}}"
-        QA_SPACE_NAME: "{{deploy.parameters.qa-space}}"
-        QA_ORG_NAME: "{{deploy.parameters.qa-organization}}"
-        QA_REGION_ID: "{{deploy.parameters.qa-region}}"
-        PROD_SPACE_NAME: "{{deploy.parameters.prod-space}}"
-        PROD_ORG_NAME: "{{deploy.parameters.prod-organization}}"
-        PROD_REGION_ID: "{{deploy.parameters.prod-region}}"
-      execute: true
-    services: ["orders-api-repo", "test"]
-
-alerting:
-  service_id: pagerduty
-
-dra:
-  service_id: draservicebroker
-  include: dra.yml
-
-messaging:
-  service_id: slack
-
-test:
-  service_id: saucelabs
-
-webide:
-  service_id: orion
-
-#Deployment
-deploy:
-  schema:
-    $ref: deploy.json
-  service-category: pipeline
-  parameters:
-    dev-space: dev
-    qa-space: qa
-    prod-space: prod
-    orders-app-name: "{{orders-api-repo.parameters.repo_name}}"
-    catalog-app-name: "{{catalog-api-repo.parameters.repo_name}}"
-    ui-app-name: "{{ui-repo.parameters.repo_name}}"
-
-#Github
-repos:
-  schema:
-    $ref: repos.json
-  service-category: hostedgit
-  parameters:
-    catalog-api-repo_name: "catalog-api-{{name}}"
-    catalog-api-repo_url: https://github.com/open-toolchain/Microservices_CatalogAPI
-    orders-api-repo_name: "orders-api-{{name}}"
-    orders-api-repo_url: https://github.com/open-toolchain/Microservices_OrdersAPI
-    ui-repo_name: "ui-{{name}}"
-    ui-repo_url: https://github.com/open-toolchain/Microservices_UI
+    getting_started: This is a placeholder for the scenario getting started message.
+  name: 'microservices-toolchain-hosted-{{timestamp}}'
+services:
+  orders-api-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - orders-api-repo
+        - test
+      name: 'orders-api-{{toolchain.name}}'
+      configuration:
+        content:
+          $ref: orders-api.pipeline.yml
+          $refType: text
+        env:
+          SAUCE_LABS: test
+          ORDER_API_REPO: orders-api-repo
+          CF_APP_NAME: '{{form.pipeline.parameters.orders-app-name}}'
+          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
+          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
+          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+        execute: true
+  catalog-api-repo:
+    service_id: hostedgit
+    parameters:
+      repo_name: '{{form.hostedgit.parameters.catalog-api-repo_name}}'
+      repo_url: '{{form.hostedgit.parameters.catalog-api-repo_url}}'
+      type: clone
+      has_issues: false
+      enable_traceability: true
+  ui-repo:
+    service_id: hostedgit
+    parameters:
+      repo_name: '{{form.hostedgit.parameters.ui-repo_name}}'
+      repo_url: '{{form.hostedgit.parameters.ui-repo_url}}'
+      type: clone
+      has_issues: true
+      enable_traceability: true
+  ui-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - ui-repo
+        - test
+      name: 'ui-{{toolchain.name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $ref: ui.pipeline.yml
+          $refType: text
+        env:
+          SAUCE_LABS: test
+          UI_REPO: ui-repo
+          CF_APP_NAME: '{{form.pipeline.parameters.ui-app-name}}'
+          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
+          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
+          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+        execute: true
+  catalog-api-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - catalog-api-repo
+        - test
+      name: 'catalog-api-{{toolchain.name}}'
+      configuration:
+        content:
+          $ref: catalog-api.pipeline.yml
+          $refType: text
+        env:
+          SAUCE_LABS: test
+          CATALOG_API_REPO: catalog-api-repo
+          CF_APP_NAME: '{{form.pipeline.parameters.catalog-app-name}}'
+          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
+          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
+          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+        execute: true
+  orders-api-repo:
+    service_id: hostedgit
+    parameters:
+      repo_name: '{{form.hostedgit.parameters.orders-api-repo_name}}'
+      repo_url: '{{form.hostedgit.parameters.orders-api-repo_url}}'
+      type: clone
+      has_issues: false
+      enable_traceability: true
+  alerting:
+    service_id: pagerduty
+  dra:
+    service_id: draservicebroker
+    $ref: dra.yml
+  messaging:
+    service_id: slack
+  test:
+    service_id: saucelabs
+  webide:
+    service_id: orion
+form:
+  pipeline:
+    parameters:
+      dev-space: dev
+      qa-space: qa
+      prod-space: prod
+      orders-app-name: '{{services.orders-api-repo.parameters.repo_name}}'
+      catalog-app-name: '{{services.catalog-api-repo.parameters.repo_name}}'
+      ui-app-name: '{{services.ui-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
+  hostedgit:
+    parameters:
+      catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
+      catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
+      orders-api-repo_name: 'orders-api-{{toolchain.name}}'
+      orders-api-repo_url: 'https://github.com/open-toolchain/Microservices_OrdersAPI'
+      ui-repo_name: 'ui-{{toolchain.name}}'
+      ui-repo_url: 'https://github.com/open-toolchain/Microservices_UI'
+    schema:
+      $ref: repos.json

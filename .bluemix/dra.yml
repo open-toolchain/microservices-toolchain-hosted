@@ -1,3 +1,4 @@
----
 parameters:
-  criteria: $file(criteria.json)
+  criteria:
+    $ref: criteria.json
+    $refType: text
