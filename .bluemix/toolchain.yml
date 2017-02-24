@@ -16,7 +16,7 @@ toolchain:
 
 # Github repos
 catalog-api-repo:
-  service_id: githubpublic
+  service_id: hostedgit
   parameters:
     repo_name: "{{repos.parameters.catalog-api-repo_name}}"
     repo_url: "{{repos.parameters.catalog-api-repo_url}}"
@@ -26,7 +26,7 @@ catalog-api-repo:
   hidden: [form, description]
 
 orders-api-repo:
-  service_id: githubpublic
+  service_id: hostedgit
   parameters:
     repo_name: "{{repos.parameters.orders-api-repo_name}}"
     repo_url: "{{repos.parameters.orders-api-repo_url}}"
@@ -36,7 +36,7 @@ orders-api-repo:
   hidden: [form, description]
 
 ui-repo:
-  service_id: githubpublic
+  service_id: hostedgit
   parameters:
     repo_name: "{{repos.parameters.ui-repo_name}}"
     repo_url: "{{repos.parameters.ui-repo_url}}"
@@ -139,7 +139,7 @@ deploy:
 repos:
   schema:
     $ref: repos.json
-  service-category: githubpublic
+  service-category: hostedgit
   parameters:
     catalog-api-repo_name: "catalog-api-{{name}}"
     catalog-api-repo_url: https://github.com/open-toolchain/Microservices_CatalogAPI
