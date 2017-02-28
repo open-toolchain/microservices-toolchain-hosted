@@ -1,4 +1,4 @@
 ---
 parameters:
-  api_token:  ""
+  api_token: ""
   channel_name: ""
