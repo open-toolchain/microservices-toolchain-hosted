@@ -57,16 +57,24 @@ stages:
   - name: Deploy
     type: deployer
     target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
+      region_id: ${STAGING_REGION_ID}
+      organization: ${STAGING_ORG_NAME}
+      space: ${STAGING_SPACE_NAME}
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      PLAN=$(cf services | grep myMicroservicesCloudant | awk '{print $3}')
+      if [ $PLAN == "Shared" ]; then
+        echo "Attempting to delete deprecated service (myMicroservicesCloudant:$PLAN). "
+        echo "This can fail if the service is still bound to applications."
+        echo "If so, please delete these applications explicitly first."
+        cf delete-service myMicroservicesCloudant -f
+      fi
       cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
       # Push app
-      export CF_APP_NAME="test-$CF_APP"
+      export CF_APP_NAME="staging-$CF_APP"
       cf push "${CF_APP_NAME}"
+      export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')      
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
   - name: Sauce Labs Tests
@@ -75,9 +83,9 @@ stages:
     services:
       - ${SAUCE_LABS}
     target:
-      region_id: ${QA_REGION_ID}
-      organization: ${QA_ORG_NAME}
-      space: ${QA_SPACE_NAME}
+      region_id: ${STAGING_REGION_ID}
+      organization: ${STAGING_ORG_NAME}
+      space: ${STAGING_SPACE_NAME}
     DL_ASSETS: 'false'
     SELECT_CMD: custom
     COMMAND: |-
@@ -117,7 +125,7 @@ stages:
       else
         echo "$GRUNTFILE not found."
       fi
-- name: PROD
+- name: PRODUCTION
   inputs:
   - type: job
     stage: BUILD
@@ -141,10 +149,10 @@ stages:
     value: PRODUCTION
     type: text
   jobs:
-  - name: Prod Gate
+  - name: Production Gate
     type: tester
     extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: Store Functional Tests Checks
+    CRITERIA: PRODUCTION Deployment Checks (func test only)
   - name: Blue/Green Deploy
     type: deployer
     target:
@@ -154,6 +162,13 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
+      PLAN=$(cf services | grep myMicroservicesCloudant | awk '{print $3}')
+      if [ $PLAN == "Shared" ]; then
+        echo "Attempting to delete deprecated service (myMicroservicesCloudant:$PLAN). "
+        echo "This can fail if the service is still bound to applications."
+        echo "If so, please delete these applications explicitly first."
+        cf delete-service myMicroservicesCloudant -f
+      fi
       cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
       if ! cf app $CF_APP; then
         cf push $CF_APP
@@ -174,4 +189,3 @@ stages:
         cf push $CF_APP
         cf delete $OLD_CF_APP -f
       fi
-

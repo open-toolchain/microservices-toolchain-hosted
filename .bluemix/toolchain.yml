@@ -3,7 +3,7 @@ default_locale: en
 locales:
   $ref: locales.yml
 template:
-  name: Microservices toolchain
+  name: Microservices toolchain with DevOps Insights
   description: >-
     With this cloud-native toolchain, you use a sample to create an online store
     that consists of three microservices: a Catalog API, an Orders API, and a UI
@@ -63,9 +63,9 @@ services:
           SAUCE_LABS: test
           ORDER_API_REPO: orders-api-repo
           CF_APP_NAME: '{{form.pipeline.parameters.orders-app-name}}'
-          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
-          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
-          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          STAGING_SPACE_NAME: '{{form.pipeline.parameters.staging-space}}'
+          STAGING_ORG_NAME: '{{form.pipeline.parameters.staging-organization}}'
+          STAGING_REGION_ID: '{{form.pipeline.parameters.staging-region}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -102,9 +102,9 @@ services:
           SAUCE_LABS: test
           UI_REPO: ui-repo
           CF_APP_NAME: '{{form.pipeline.parameters.ui-app-name}}'
-          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
-          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
-          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          STAGING_SPACE_NAME: '{{form.pipeline.parameters.staging-space}}'
+          STAGING_ORG_NAME: '{{form.pipeline.parameters.staging-organization}}'
+          STAGING_REGION_ID: '{{form.pipeline.parameters.staging-region}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -124,9 +124,9 @@ services:
           SAUCE_LABS: test
           CATALOG_API_REPO: catalog-api-repo
           CF_APP_NAME: '{{form.pipeline.parameters.catalog-app-name}}'
-          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
-          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
-          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          STAGING_SPACE_NAME: '{{form.pipeline.parameters.staging-space}}'
+          STAGING_ORG_NAME: '{{form.pipeline.parameters.staging-organization}}'
+          STAGING_REGION_ID: '{{form.pipeline.parameters.staging-region}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -153,8 +153,7 @@ services:
 form:
   pipeline:
     parameters:
-      dev-space: dev
-      qa-space: qa
+      staging-space: dev
       prod-space: prod
       orders-app-name: '{{services.orders-api-repo.parameters.repo_name}}'
       catalog-app-name: '{{services.catalog-api-repo.parameters.repo_name}}'
