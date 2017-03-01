@@ -55,7 +55,7 @@ toolchain:
       Add more tool integrations. 
 
 
-      For step-by-step instructions, see [tutorial](https://ibm.ent.box.com/notes/122573221923).
+      For step-by-step instructions, see [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd).
   name: 'microservices-toolchain-hosted-{{timestamp}}'
 services:
   orders-api-build:
