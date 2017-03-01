@@ -45,11 +45,12 @@ toolchain:
     getting_started: >-
       **Quick start:** 
       
+
       View your pipelines and see the sample app deployed. 
       View the source code in the Git repos and try making a change to trigger a new build and deploy. 
-      See traceability from code commits to deployment. 
-
       
+      
+      See traceability from code commits to deployment. 
       Evaluate Deployment Risk in DevOps Insights. 
       Add more tool integrations. 
 
