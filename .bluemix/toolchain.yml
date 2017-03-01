@@ -45,18 +45,15 @@ toolchain:
     getting_started: >-
       **Quick start:** 
       
-      - View your pipelines and see the sample app deployed.
-
-
-      - View the source code in the Git repos and try making a change to trigger a new build and deploy. 
-
-
-      - See traceability from code commits to deployment. Evaluate Deployment Risk in DevOps Insights. 
-
-
-      - Add more tool integrations. 
+      View your pipelines and see the sample app deployed. 
+      View the source code in the Git repos and try making a change to trigger a new build and deploy. 
+      See traceability from code commits to deployment. 
 
       
+      Evaluate Deployment Risk in DevOps Insights. 
+      Add more tool integrations. 
+
+
       For step-by-step instructions, see [tutorial](https://ibm.ent.box.com/notes/122573221923).
   name: 'microservices-toolchain-hosted-{{timestamp}}'
 services:
