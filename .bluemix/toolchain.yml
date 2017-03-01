@@ -163,7 +163,7 @@ services:
 form:
   pipeline:
     parameters:
-      staging-space: dev
+      staging-space: staging
       prod-space: prod
       orders-app-name: '{{services.orders-api-repo.parameters.repo_name}}'
       catalog-app-name: '{{services.catalog-api-repo.parameters.repo_name}}'
