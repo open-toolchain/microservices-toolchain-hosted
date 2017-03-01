@@ -3,17 +3,17 @@ default_locale: en
 locales:
   $ref: locales.yml
 template:
-  name: Microservices toolchain with DevOps Insights
+  name: Microservices toolchain with DevOps Insights (v2)
   description: >-
     With this cloud-native toolchain, you use a sample to create an online store
     that consists of three microservices: a Catalog API, an Orders API, and a UI
     that calls both of the APIs. The toolchain is preconfigured for continuous
-    delivery, source control, blue-green deployment, functional testing, issue
-    tracking, online editing, and alert notification.
+    delivery, source control, functional testing, issue tracking, online editing, 
+    and alert notification.
 
 
     The Catalog and Orders API are backed by a Cloudant store. As part of
-    deploying this application a no cost Cloudant service instance will be
+    deploying this application, a no cost Cloudant service instance will be
     created. For more information and terms, see the [Bluemix
     catalog](/catalog/services/cloudant-nosql-db/).
 
@@ -43,8 +43,10 @@ template:
 toolchain:
   template:
     getting_started: >-
-      **Quick start:** View your pipelines, manage access to the toolchain, and continue to develop your microservices. 
-      
+      **Quick start:**View your pipelines and see the sample app deployed.  
+      View the source code in the Git repos and try making a change to trigger a new build and deploy. 
+      See traceability from code commits to deployment. Evaluate Deployment Risk in DevOps Insights. 
+      Add more tool integrations. 
       For step-by-step instructions, see [tutorial](https://ibm.ent.box.com/notes/122573221923).
   name: 'microservices-toolchain-hosted-{{timestamp}}'
 services:
