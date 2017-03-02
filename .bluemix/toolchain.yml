@@ -44,15 +44,15 @@ toolchain:
   template:
     getting_started: >-
       **Quick start:** 
-      
 
-      View your pipelines and see the sample app deployed. 
-      View the source code in the Git repos and try making a change to trigger a new build and deploy. 
-      
-      
-      See traceability from code commits to deployment. 
-      Evaluate Deployment Risk in DevOps Insights. 
-      Add more tool integrations. 
+
+      View your pipelines and see the sample app deployed. View the source code in the Git repos.
+
+
+      Make a change to trigger a new build and deploy. See traceability from code commits to deployment. 
+
+
+      Evaluate Deployment Risk in DevOps Insights. Add more tool integrations.
 
 
       For step-by-step instructions, see [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd).
