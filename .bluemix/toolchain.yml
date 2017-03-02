@@ -43,19 +43,13 @@ template:
 toolchain:
   template:
     getting_started: >-
-      **Quick start:** 
+      **Your toolchain is ready!**
 
 
-      View your pipelines and see the sample app deployed. View the source code in the Git repos.
+      **Tip:** Commit a change to the Git repo to trigger a new build and deployment.
 
 
-      Make a change to trigger a new build and deploy. See traceability from code commits to deployment. 
-
-
-      Evaluate Deployment Risk in DevOps Insights. Add more tool integrations.
-
-
-      For step-by-step instructions, see [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd).
+      For step-by-step instructions, see the [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd) for this toolchain.
   name: 'microservices-toolchain-hosted-{{timestamp}}'
 services:
   orders-api-build:
