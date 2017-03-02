@@ -26,7 +26,7 @@ template:
 
 
     To get started, click **Create**.
-  header: '![](toolchain-ic17.png "header image")'
+  header: '![](toolchain.svg "header image")'
   icon: icon.svg
   required:
     - ui-build
