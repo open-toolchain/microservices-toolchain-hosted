@@ -84,14 +84,20 @@ stages:
       application: ${CF_APP_NAME}
     script: |
       #!/bin/bash
-      PLAN=$(cf services | grep myMicroservicesCloudant | awk '{print $3}')
-      if [ $PLAN == "Shared" ]; then
-        echo "Attempting to delete deprecated service (myMicroservicesCloudant:$PLAN). "
-        echo "This can fail if the service is still bound to applications."
-        echo "If so, please delete these applications explicitly first."
-        cf delete-service myMicroservicesCloudant -f
+      SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
+      if [ ! -z "$SERVICE" ]; then
+        PLAN=$(echo $SERVICE | awk '{print $3}')
+        if [ $PLAN == "Shared" ]; then
+          echo "Attempting to delete deprecated service (myMicroservicesCloudant:$PLAN)."
+          echo "Note: This can fail if the service is still bound to apps or service keys."
+          echo "      If so, please delete these apps or service keys explicitly first."
+          cf delete-service myMicroservicesCloudant -f
+        else
+          echo "Keeping existing service (myMicroservicesCloudant:$PLAN)."
+        fi
+      else
+        cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
       fi
-      cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
       # Push app
       export CF_APP_NAME="staging-$CF_APP"
       cf push "${CF_APP_NAME}"
@@ -180,14 +186,20 @@ stages:
       application: ${CF_APP_NAME}
     script: |-
       #!/bin/bash
-      PLAN=$(cf services | grep myMicroservicesCloudant | awk '{print $3}')
-      if [ $PLAN == "Shared" ]; then
-        echo "Attempting to delete deprecated service (myMicroservicesCloudant:$PLAN). "
-        echo "This can fail if the service is still bound to applications."
-        echo "If so, please delete these applications explicitly first."
-        cf delete-service myMicroservicesCloudant -f
+      SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
+      if [ ! -z "$SERVICE" ]; then
+        PLAN=$(echo $SERVICE | awk '{print $3}')
+        if [ $PLAN == "Shared" ]; then
+          echo "Attempting to delete deprecated service (myMicroservicesCloudant:$PLAN)."
+          echo "Note: This can fail if the service is still bound to apps or service keys."
+          echo "      If so, please delete these apps or service keys explicitly first."
+          cf delete-service myMicroservicesCloudant -f
+        else
+          echo "Keeping existing service (myMicroservicesCloudant:$PLAN)."
+        fi
+      else
+        cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
       fi
-      cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
       if ! cf app $CF_APP; then  
         cf push $CF_APP
       else
