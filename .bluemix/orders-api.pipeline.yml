@@ -71,6 +71,7 @@ stages:
           echo "Note: This can fail if the service is still bound to apps or service keys."
           echo "      If so, please delete these apps or service keys explicitly first."
           cf delete-service myMicroservicesCloudant -f
+          cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
         else
           echo "Keeping existing service (myMicroservicesCloudant:$PLAN)."
         fi
@@ -176,6 +177,7 @@ stages:
           echo "Note: This can fail if the service is still bound to apps or service keys."
           echo "      If so, please delete these apps or service keys explicitly first."
           cf delete-service myMicroservicesCloudant -f
+          cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
         else
           echo "Keeping existing service (myMicroservicesCloudant:$PLAN)."
         fi
