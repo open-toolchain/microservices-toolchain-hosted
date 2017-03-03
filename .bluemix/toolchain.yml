@@ -12,7 +12,7 @@ template:
     This toolchain uses tools that are part of the Continuous Delivery service. If an instance of that service isn't already in your organization, when you click **Create**, it is automatically added at no cost to you. For more information and terms, see the [Bluemix catalog](https://console.ng.bluemix.net/catalog/services/continuous-delivery/).
 
     To get started, click **Create**.
-  header: '![](toolchain-ic17.png "header image")'
+  header: '![](toolchain.svg "header image")'
   icon: icon.svg
   required:
     - ui-build
@@ -30,6 +30,7 @@ toolchain:
   template:
     getting_started: |-
       **Your toolchain is ready!**
+      
       **Quick start:** Commit a change to a Git repo to trigger a new build and deployment of one of the microservices. See results in the Deployment Risk dashboard in DevOps Insights. For step-by-step instructions, see the [tutorial](TBD) for this toolchain.
   name: 'microservices-toolchain-hosted-{{timestamp}}'
 services:
@@ -48,9 +49,9 @@ services:
           SAUCE_LABS: test
           ORDER_API_REPO: orders-api-repo
           CF_APP_NAME: '{{form.pipeline.parameters.orders-app-name}}'
-          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
-          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
-          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          STAGING_SPACE_NAME: '{{form.pipeline.parameters.staging-space}}'
+          STAGING_ORG_NAME: '{{form.pipeline.parameters.staging-organization}}'
+          STAGING_REGION_ID: '{{form.pipeline.parameters.staging-region}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -87,9 +88,9 @@ services:
           SAUCE_LABS: test
           UI_REPO: ui-repo
           CF_APP_NAME: '{{form.pipeline.parameters.ui-app-name}}'
-          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
-          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
-          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          STAGING_SPACE_NAME: '{{form.pipeline.parameters.staging-space}}'
+          STAGING_ORG_NAME: '{{form.pipeline.parameters.staging-organization}}'
+          STAGING_REGION_ID: '{{form.pipeline.parameters.staging-region}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -109,9 +110,9 @@ services:
           SAUCE_LABS: test
           CATALOG_API_REPO: catalog-api-repo
           CF_APP_NAME: '{{form.pipeline.parameters.catalog-app-name}}'
-          QA_SPACE_NAME: '{{form.pipeline.parameters.qa-space}}'
-          QA_ORG_NAME: '{{form.pipeline.parameters.qa-organization}}'
-          QA_REGION_ID: '{{form.pipeline.parameters.qa-region}}'
+          STAGING_SPACE_NAME: '{{form.pipeline.parameters.staging-space}}'
+          STAGING_ORG_NAME: '{{form.pipeline.parameters.staging-organization}}'
+          STAGING_REGION_ID: '{{form.pipeline.parameters.staging-region}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -138,8 +139,7 @@ services:
 form:
   pipeline:
     parameters:
-      dev-space: dev
-      qa-space: qa
+      staging-space: staging
       prod-space: prod
       orders-app-name: '{{services.orders-api-repo.parameters.repo_name}}'
       catalog-app-name: '{{services.catalog-api-repo.parameters.repo_name}}'
