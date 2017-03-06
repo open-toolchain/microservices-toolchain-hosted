@@ -41,7 +41,7 @@ services:
       services:
         - orders-api-repo
         - test
-      name: 'orders-api-{{toolchain.name}}'
+      name: 'orders-api-{{timestamp}}'
       configuration:
         content:
           $ref: orders-api.pipeline.yml
@@ -79,7 +79,7 @@ services:
       services:
         - ui-repo
         - test
-      name: 'ui-{{toolchain.name}}'
+      name: 'ui-{{timestamp}}'
       ui-pipeline: true
       configuration:
         content:
@@ -102,7 +102,7 @@ services:
       services:
         - catalog-api-repo
         - test
-      name: 'catalog-api-{{toolchain.name}}'
+      name: 'catalog-api-{{timestamp}}'
       configuration:
         content:
           $ref: catalog-api.pipeline.yml
@@ -149,11 +149,11 @@ form:
       $ref: deploy.json
   hostedgit:
     parameters:
-      catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
+      catalog-api-repo_name: 'catalog-api-{{timestamp}}'
       catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
-      orders-api-repo_name: 'orders-api-{{toolchain.name}}'
+      orders-api-repo_name: 'orders-api-{{timestamp}}'
       orders-api-repo_url: 'https://github.com/open-toolchain/Microservices_OrdersAPI'
-      ui-repo_name: 'ui-{{toolchain.name}}'
+      ui-repo_name: 'ui-{{timestamp}}'
       ui-repo_url: 'https://github.com/open-toolchain/Microservices_UI'
     schema:
       $ref: repos.json
