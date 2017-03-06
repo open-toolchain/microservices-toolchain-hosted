@@ -32,7 +32,6 @@ toolchain:
       **Your toolchain is ready!**
       
       **Quick start:** Commit a change to a Git repo to trigger a new build and deployment of one of the microservices. See results in the Deployment Risk dashboard in DevOps Insights.
-      
       For step-by-step instructions, see the [tutorial](https://www.ibm.com/devops/method/category/tools) for this toolchain.
   name: 'microservices-toolchain-{{timestamp}}'
 services:
