@@ -15,7 +15,7 @@ Get started with this sample, which is an online store that consists of three mi
 [![Create Toolchain](https://console.stage1.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.stage1.ng.bluemix.net/devops/setup/deploy?repository=https://github.com/open-toolchain/microservices-toolchain-hosted&refreshServices)
 
 ---
-### Learn more
+### Learn more 
 
 * [Step by step tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd)
 * [Getting started](https://bluemix.net/devops)
