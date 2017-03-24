@@ -1,11 +1,17 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "localized-struct": {
-        "$ref": "repos-localized-struct.json"
+    "messages": {
+       "$i18n": "locales.yml"
     },
-    "title": "Microservices deployment stage",
-    "description": "Feb Demo Microservices GitHub Schema",
-    "longDescription": "With GitHub, you can store your source code in a new or an existing GitHub repository.",
+    "title": {
+      "$ref": "#/messages/github.title"
+    },
+    "description": {
+      "$ref": "#/messages/github.description"
+    },
+    "longDescription": {
+      "$ref": "#/messages/github.longDescription"
+    },
     "type": "object",
     "properties": {
         "catalog-api-repo_name": {
@@ -51,7 +57,9 @@
             "items": [
                 {
                     "type": "label",
-                    "title": "Source Repository"
+                    "title": {
+                        "$ref": "#/messages/github.sourceRepository"
+                    }
                 },
                 {
                     "type": "label",
@@ -59,7 +67,9 @@
                 },
                 {
                     "type": "label",
-                    "title": "Target Repository"
+                    "title": {
+                        "$ref": "#/messages/github.targetRepository"
+                    }
                 },
                 {
                     "type": "text",

@@ -350,29 +350,29 @@
 <polygon id="svg_370" class="st36" points="473,556.5 468.8,549.1 473,541.9 481.4,541.9 485.6,549.1 481.4,556.5 "/>
 <circle id="svg_371" class="st37" cx="485.9" cy="549.1" r="8.3"/>
 <polygon id="svg_372" class="st37" points="481.6,541.9 481.6,556.5 494.2,549.1 "/>
-<text id="think" transform="matrix(1 0 0 1 80.35 377.9)" class="st38 st39">THINK</text>
-<text id="code" transform="matrix(1 0 0 1 169.35 377.9)" class="st38 st39">CODE</text>
-<text id="deliver" transform="matrix(1 0 0 1 295.35 377.9)" class="st38 st39">DELIVER</text>
-<text id="run" transform="matrix(1 0 0 1 461.35 377.9)" class="st38 st39">RUN</text>
-<text id="learn" transform="matrix(1 0 0 1 544.35 377.9)" class="st38 st39">LEARN</text>
-<text id="manage" transform="matrix(1 0 0 1 622.35 377.9)" class="st38 st39">MANAGE</text>
-<text id="culture" transform="matrix(1 0 0 1 699.35 377.9)" class="st38 st39">CULTURE</text>
-<text id="issueTracker" transform="matrix(1 0 0 1 82.35 488.9)" class="st38 st39">ISSUE TRACKER</text>
-<text id="repository1" transform="matrix(1 0 0 1 200.35 488.9)" class="st38 st39">REPOSITORY</text>
-<text id="pipeline1" transform="matrix(1 0 0 1 296.35 488.9)" class="st38 st39">PIPELINE</text>
-<text id="pipeline2" transform="matrix(1 0 0 1 296.35 588.9)" class="st38 st39">PIPELINE</text>
-<text id="pipeline3" transform="matrix(1 0 0 1 297.35 690.9)" class="st38 st39">PIPELINE</text>
-<text id="saucelabs1" transform="matrix(1 0 0 1 369.35 488.9)" class="st38 st39">SAUCE LABS</text>
-<text id="saucelabs2" transform="matrix(1 0 0 1 369.35 588.9)" class="st38 st39">SAUCE LABS</text>
-<text id="saucelabs3" transform="matrix(1 0 0 1 369.35 690.9)" class="st38 st39">SAUCE LABS</text>
-<text id="bluemix" transform="matrix(1 0 0 1 462.35 588.9)" class="st38 st39">BLUEMIX</text>
-<text id="repository2" transform="matrix(1 0 0 1 200.35 588.9)" class="st38 st39">REPOSITORY</text>
-<text id="repository3" transform="matrix(1 0 0 1 200.35 690.9)" class="st38 st39">REPOSITORY</text>
-<text id="webIde" transform="matrix(1 0 0 1 208.35 792.9)" class="st38 st39">WEB IDE</text>
-<text id="slack" transform="matrix(1.0228 0 0 1 720.9434 487.9005)" class="st38 st39">SLACK</text>
-<text id="pagerDuty" transform="matrix(1.0228 0 0 1 622.5674 487.9005)" class="st38 st39">PAGER DUTY</text>
-<text id="devops" transform="matrix(1 0 0 1 544.35 488.9)" class="st38 st39">DEVOPS</text>
-<text id="insights" transform="matrix(1 0 0 1 541.35 500.9)" class="st38 st39">INSIGHTS</text>
+<text id="headerSVG.think" transform="matrix(1 0 0 1 80.35 377.9)" class="st38 st39">THINK</text>
+<text id="headerSVG.code" transform="matrix(1 0 0 1 169.35 377.9)" class="st38 st39">CODE</text>
+<text id="headerSVG.deliver" transform="matrix(1 0 0 1 295.35 377.9)" class="st38 st39">DELIVER</text>
+<text id="headerSVG.run" transform="matrix(1 0 0 1 461.35 377.9)" class="st38 st39">RUN</text>
+<text id="headerSVG.learn" transform="matrix(1 0 0 1 544.35 377.9)" class="st38 st39">LEARN</text>
+<text id="headerSVG.manage" transform="matrix(1 0 0 1 622.35 377.9)" class="st38 st39">MANAGE</text>
+<text id="headerSVG.culture" transform="matrix(1 0 0 1 699.35 377.9)" class="st38 st39">CULTURE</text>
+<text id="headerSVG.issueTracker" transform="matrix(1 0 0 1 82.35 488.9)" class="st38 st39">ISSUE TRACKER</text>
+<text id="headerSVG.repository1" transform="matrix(1 0 0 1 200.35 488.9)" class="st38 st39">REPOSITORY</text>
+<text id="headerSVG.pipeline1" transform="matrix(1 0 0 1 296.35 488.9)" class="st38 st39">PIPELINE</text>
+<text id="headerSVG.pipeline2" transform="matrix(1 0 0 1 296.35 588.9)" class="st38 st39">PIPELINE</text>
+<text id="headerSVG.pipeline3" transform="matrix(1 0 0 1 297.35 690.9)" class="st38 st39">PIPELINE</text>
+<text id="headerSVG.saucelabs1" transform="matrix(1 0 0 1 369.35 488.9)" class="st38 st39">SAUCE LABS</text>
+<text id="headerSVG.saucelabs2" transform="matrix(1 0 0 1 369.35 588.9)" class="st38 st39">SAUCE LABS</text>
+<text id="headerSVG.saucelabs3" transform="matrix(1 0 0 1 369.35 690.9)" class="st38 st39">SAUCE LABS</text>
+<text id="headerSVG.bluemix" transform="matrix(1 0 0 1 462.35 588.9)" class="st38 st39">BLUEMIX</text>
+<text id="headerSVG.repository2" transform="matrix(1 0 0 1 200.35 588.9)" class="st38 st39">REPOSITORY</text>
+<text id="headerSVG.repository3" transform="matrix(1 0 0 1 200.35 690.9)" class="st38 st39">REPOSITORY</text>
+<text id="headerSVG.webIde" transform="matrix(1 0 0 1 208.35 792.9)" class="st38 st39">WEB IDE</text>
+<text id="headerSVG.slack" transform="matrix(1.0228 0 0 1 720.9434 487.9005)" class="st38 st39">SLACK</text>
+<text id="headerSVG.pagerDuty" transform="matrix(1.0228 0 0 1 622.5674 487.9005)" class="st38 st39">PAGER DUTY</text>
+<text id="headerSVG.devops" transform="matrix(1 0 0 1 544.35 488.9)" class="st38 st39">DEVOPS</text>
+<text id="headerSVG.insights" transform="matrix(1 0 0 1 541.35 500.9)" class="st38 st39">INSIGHTS</text>
 <g>
 	<path class="st0" d="M117.5,447.5c-6-7.3,1.1-17,2.3-17"/>
 	<path class="st36" d="M117.7,447.7c-0.1,0-0.3,0-0.4-0.1c-0.1,0-0.3,0-0.6-0.1c-4.1-0.6-6.4-3-7.5-4.8c-1.5,7.9,3.1,13.5,5.2,15.1
