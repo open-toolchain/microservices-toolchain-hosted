@@ -4,7 +4,7 @@ template.description: "With this cloud-native toolchain, you use a sample to cre
 template.gettingStarted: "**Your toolchain is ready!**\n**Quick start:** Commit a change to a Git repo to trigger a new build and deployment of one of the microservices. See results in the Deployment Risk dashboard in DevOps Insights. For step-by-step instructions, see the [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd) for this toolchain."
 deploy.title: "Microservices deployment stage"
 deploy.description: "Microservices deployment schema"
-$deploy.longDescription: "The Delivery Pipeline automates continuous deployment."
+deploy.longDescription: "The Delivery Pipeline automates continuous deployment."
 deploy.appName1: "Orders app name"
 deploy.appName2: "Catalog app name"
 deploy.appName3: "UI app name"
