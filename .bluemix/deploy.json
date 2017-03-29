@@ -1,11 +1,17 @@
 {
     "$schema": "http://json-schema.org/draft-04/schema#",
-    "title": "Microservices deployment stage",
-    "localized-struct":{
-        "$ref": "deploy-localized-struct.json"
+    "messages": {
+       "$i18n": "locales.yml"
     },
-    "description": "Microservices Stage Schema",
-    "longDescription": "The Delivery Pipeline automates continuous deployment.",
+    "title": {
+      "$ref": "#/messages/deploy.title"
+    },
+    "description": {
+      "$ref": "#/messages/deploy.description"
+    },
+    "longDescription": {
+      "$ref": "#/messages/deploy.longDescription"
+    },
     "type": "object",
     "properties": {
         "staging-region": {
@@ -33,15 +39,21 @@
             "type": "string"
         },
         "orders-app-name": {
-            "description": "The name of the app for the Orders API",
+            "description": {
+              "$ref": "#/messages/deploy.appDescription1"
+            },
             "type": "string"
         },
        "catalog-app-name": {
-            "description": "The name of the app for the Catalog API",
+            "description": {
+              "$ref": "#/messages/deploy.appDescription2"
+            },
             "type": "string"
         },
        "ui-app-name": {
-            "description": "The name of the app for the UI that calls the Orders and Catalog APIs",
+            "description": {
+              "$ref": "#/messages/deploy.appDescription3"
+            },
             "type": "string"
         }
     },
@@ -54,19 +66,25 @@
        {
           "type": "text",
           "readonly": false,
-          "title": "Orders app name",
+          "title": {
+            "$ref": "#/messages/deploy.appName1"
+          },
           "key": "orders-app-name"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "Catalog app name",
+          "title": {
+            "$ref": "#/messages/deploy.appName2"
+          },
           "key": "catalog-app-name"
         },
         {
           "type": "text",
           "readonly": false,
-          "title": "UI app name",
+          "title": {
+            "$ref": "#/messages/deploy.appName3"
+          },
           "key": "ui-app-name"
         },
         {
@@ -80,19 +98,27 @@
                 },
                 {
                   "type": "label",
-                  "title": "Region"
+                  "title": {
+                    "$ref": "#/messages/region"
+                  }
                 },
                 {
                   "type": "label",
-                  "title": "Organization"
+                  "title": {
+                    "$ref": "#/messages/organization"
+                  }
                 },
                 {
                   "type": "label",
-                  "title": "Space"
+                  "title": {
+                    "$ref": "#/messages/space"
+                  }
                 },
                 {
                   "type": "label",
-                  "title": "Test stage"
+                  "title": {
+                    "$ref": "#/messages/testStage"
+                  }
                 },
                 {
                   "type": "select",
@@ -109,7 +135,9 @@
                 },
                 {
                   "type": "label",
-                  "title": "Production stage"
+                  "title": {
+                    "$ref": "#/messages/prodStage"
+                  }
                 },
                 {
                   "type": "select",
