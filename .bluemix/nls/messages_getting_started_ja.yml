@@ -1,0 +1,2 @@
+---
+template.gettingStarted: "**ツールチェーンの準備ができました。**\n**クイック・スタート:** Git リポジトリーに対する変更をコミットし、いずれかのマイクロサービスの新しいビルドおよびデプロイメントをトリガーしてください。DevOps Insights の「デプロイメント・リスク」ダッシュボードで結果を確認してください。ステップバイステップの説明については、このツールチェーンの[チュートリアル](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd)を参照してください。"

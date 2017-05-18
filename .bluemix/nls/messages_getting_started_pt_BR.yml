@@ -1,0 +1,2 @@
+---
+template.gettingStarted: "**Sua cadeia de ferramentas está pronta!**\n**Iniciação rápida:** Confirme uma mudança em um repositório Git para acionar uma nova compilação e implementação de um dos microsserviços. Veja os resultados no painel Risco de implementação do DevOps Insights. Para obter instruções passo a passo, consulte o [tutorial](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd) para esta cadeia de ferramentas."

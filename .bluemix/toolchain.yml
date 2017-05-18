@@ -23,7 +23,7 @@ template:
 toolchain:
   template:
     getting_started:
-      $ref: "#/messages/template.gettingStarted"
+      $ref: locales_getting_started.yml
   name: 'microservices-toolchain-{{timestamp}}'
 services:
   orders-api-build:

@@ -1,0 +1,2 @@
+---
+template.gettingStarted: "**¡Su cadena de herramientas está lista!**\n**Inicio rápido:** Confirmar un cambio en un repositorio Git para desencadenar una nueva compilación y despliegue de uno de los microservicios. Consulte los resultados en el panel de control de Riesgo de despliegue en DevOps Insights. Para obtener instrucciones detalladas paso a paso, consulte la [guía de aprendizaje](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd) para esta cadena de herramientas. "

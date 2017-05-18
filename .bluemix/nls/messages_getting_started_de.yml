@@ -1,0 +1,2 @@
+---
+template.gettingStarted: "**Ihre Toolchain steht bereit!**\n**Schnelleinstieg:** Schreiben Sie eine Änderung in einem Git-Repository fest, um einen neuen Build und eine neue Bereitstellung für einen der Microservices auszulösen. Die Ergebnisse sehen Sie im Dashboard für Bereitstellungsrisiken (Deployment Risk) von DevOps Insights. Schrittweise Anleitungen bietet das [Lernprogramm](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd) für diese Toolchain. "
