@@ -1,7 +1,7 @@
 ---
 template.name: "使用 DevOps Insights (V2) 的微服务工具链"
 template.description: "使用此云本地工具链，可通过样本创建包含以下三个微服务的网上商店：目录 API、订单 API 以及调用这两个 API 的 UI。预先配置了此工具链，以进行持续交付、源代码控制、功能测试、问题跟踪、联机编辑和警报通知。\n\n目录和订单 API 由 Cloudant 商店提供支持。在部署此应用程序的过程中，将创建免费的 Cloudant 服务实例。有关更多信息和术语，请参阅 [Bluemix 目录](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)。\n\n此工具链使用 Continuous Delivery 服务中的工具。如果您组织中没有该服务的实例，当您单击**创建**时，会免费为您自动添加该服务实例。有关更多信息和术语，请参阅 [Bluemix 目录](https://console.ng.bluemix.net/catalog/services/continuous-delivery/)。\n\n单击**创建**以开始。"
-template.gettingStarted: "**工具链已就绪！**\n**快速启动：** 将更改落实到 Git 存储库以触发其中一个微服务的新构建和部署。在 DevOps Insights 的“部署风险”仪表板中可查看结果。有关逐步指示信息，请参阅此工具链的[教程](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd)。"
+template.gettingStarted: "**工具链已就绪！**\n**快速启动：** 将更改落实到 Git 存储库以触发其中一个微服务的新构建和部署。在 DevOps Insights 的“部署风险”仪表板中可查看结果。有关逐步指示信息，请参阅此工具链的 [教程](https://www.ibm.com/devops/method/tutorials/tutorial_toolchain_microservices_cd?task=2)。"
 deploy.title: "微服务部署阶段"
 deploy.description: "微服务部署模式"
 deploy.longDescription: "Delivery Pipeline 自动执行持续部署。"
