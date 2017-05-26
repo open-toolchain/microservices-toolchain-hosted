@@ -6,7 +6,7 @@ template:
     $ref: "#/messages/template.name"
   description:
     $ref: "#/messages/template.description"
-  header: '![](toolchain.svg "header image")'
+  header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
     - ui-build
