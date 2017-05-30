@@ -357,7 +357,7 @@
 <text id="headerSVG.learn" transform="matrix(1 0 0 1 544.35 377.9)" class="st38 st39">LEARN</text>
 <text id="headerSVG.manage" transform="matrix(1 0 0 1 622.35 377.9)" class="st38 st39">MANAGE</text>
 <text id="headerSVG.culture" transform="matrix(1 0 0 1 699.35 377.9)" class="st38 st39">CULTURE</text>
-<text id="headerSVG.issueTracker" transform="matrix(1 0 0 1 82.35 488.9)" class="st38 st39">ISSUE TRACKER</text>
+<text id="headerSVG.issueTracker" transform="matrix(1 0 0 1 82.35 488.9)" textLength="90" lengthAdjust="spacingAndGlyphs" class="st38 st39">ISSUE TRACKER</text>
 <text id="headerSVG.repository1" transform="matrix(1 0 0 1 200.35 488.9)" class="st38 st39">REPOSITORY</text>
 <text id="headerSVG.pipeline1" transform="matrix(1 0 0 1 296.35 488.9)" class="st38 st39">PIPELINE</text>
 <text id="headerSVG.pipeline2" transform="matrix(1 0 0 1 296.35 588.9)" class="st38 st39">PIPELINE</text>
