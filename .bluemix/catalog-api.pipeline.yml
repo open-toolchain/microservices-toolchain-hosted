@@ -42,7 +42,7 @@ stages:
         idra --publishtestresult --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
 
         if [ $grunt_result -ne 0 ]; then
-           exit 1
+           exit $grunt_result
         fi
       else
         echo "$GRUNTFILE not found."
@@ -147,7 +147,7 @@ stages:
         idra --publishtestresult --filelocation=./xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
-           exit 1
+           exit $grunt_result
         fi
       else
         echo "$GRUNTFILE not found."
