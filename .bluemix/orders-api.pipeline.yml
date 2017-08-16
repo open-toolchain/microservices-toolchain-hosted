@@ -99,6 +99,7 @@ stages:
       #!/bin/bash
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
+        export PATH=/opt/IBM/node-v4.2/bin:$PATH
         npm install
         npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
