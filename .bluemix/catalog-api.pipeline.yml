@@ -19,19 +19,30 @@ stages:
     type: builder
   - name: Unit Tests
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_upload_results
-    APPLICATION_NAME: ${CF_APP_NAME}
-    LIFE_CYCLE_STAGE_SELECT: unittest
-    ADDITIONAL_LIFE_CYCLE_STAGE_SELECT: code
-    LOG_FILE: tests/server/mochatest.json
-    ADDITIONAL_LOG_FILE: tests/server/coverage/reports/coverage-summary.json
-    COMMAND: |-
+    enable_tests: true
+    test_file_pattern: ./tests/server/mochatest.xml
+    coverage_type: istanbul
+    coverage_directory: ./tests/server/coverage/reports/lcov-report
+    coverage_file_pattern: ./tests/server/coverage/reports/coverage.json
+    script: |-
       #!/bin/bash
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
         npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
         npm install
-        grunt dev-test-cov --no-color -f --gruntfile $GRUNTFILE --base .
+        npm install -g grunt-idra3
+
+        set +e
+        grunt dev-test-cov --no-color --gruntfile $GRUNTFILE --base .
+        grunt_result=$?
+        set -e
+
+        idra --publishtestresult --filelocation=./tests/server/mochatest.xml --type=unittest
+        idra --publishtestresult --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
+
+        if [ $grunt_result -ne 0 ]; then
+           exit 1
+        fi
       else
         echo "$GRUNTFILE not found."
       fi
@@ -121,38 +132,26 @@ stages:
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
         npm install
+        npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
           grunt test_fake --gruntfile $GRUNTFILE --base .
+          grunt_result=$?
         else
           grunt test_real --gruntfile $GRUNTFILE --base .
+          grunt_result=$?
+        fi
+
+        idra --publishtestresult --filelocation=./xunit.xml --type=fvt
+
+        if [ $grunt_result -ne 0 ]; then
+           exit 1
         fi
       else
         echo "$GRUNTFILE not found."
       fi
     enable_tests: true
     test_file_pattern: '*.xml'
-  - name: Functional Tests
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_upload_results
-    APPLICATION_NAME: ${CF_APP_NAME}
-    LIFE_CYCLE_STAGE_SELECT: fvt
-    ADDITIONAL_LIFE_CYCLE_STAGE_SELECT: none
-    LOG_FILE: xunit.xml
-    COMMAND: |-
-      #!/bin/bash
-      GRUNTFILE="tests/Gruntfile.js"
-      if [ -f $GRUNTFILE ]; then
-        npm install
-        echo $APP_URL | grep "stage1"
-        if [ $? -eq 0 ]; then
-          grunt test_fake --gruntfile $GRUNTFILE --base .
-        else
-          grunt test_real --gruntfile $GRUNTFILE --base .
-        fi
-      else
-        echo "$GRUNTFILE not found."
-      fi
 - name: PRODUCTION
   inputs:
   - type: job
