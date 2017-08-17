@@ -17,9 +17,9 @@ template:
     - ui-repo
   info:
     git url: >-
-      [https://github.com/jparra5/microservices-toolchain-hosted](https://github.com/jparra5/microservices-toolchain-hosted)
+      [https://github.com/open-toolchain/microservices-toolchain-hosted](https://github.com/open-toolchain/microservices-toolchain-hosted)
     git branch: >-
-      [master](https://github.com/jparra5/microservices-toolchain-hosted/tree/master)
+      [master](https://github.com/open-toolchain/microservices-toolchain-hosted/tree/master)
 toolchain:
   template:
     getting_started:
@@ -141,7 +141,7 @@ form:
   hostedgit:
     parameters:
       catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
-      catalog-api-repo_url: 'https://github.com/jparra5/Microservices_CatalogAPI'
+      catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
       orders-api-repo_name: 'orders-api-{{toolchain.name}}'
       orders-api-repo_url: 'https://github.com/open-toolchain/Microservices_OrdersAPI'
       ui-repo_name: 'ui-{{toolchain.name}}'
