@@ -99,39 +99,28 @@ stages:
       #!/bin/bash
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
+        export PATH=/opt/IBM/node-v4.2/bin:$PATH
         npm install
+        npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
           grunt test_fake --gruntfile $GRUNTFILE --base .
+          grunt_result=$?
         else
           grunt test_real --gruntfile $GRUNTFILE --base .
+          grunt_result=$?
+        fi
+
+        idra --publishtestresult --filelocation=./xunit.xml --type=fvt
+
+        if [ $grunt_result -ne 0 ]; then
+           exit $grunt_result
         fi
       else
         echo "$GRUNTFILE not found."
       fi
     enable_tests: true
     test_file_pattern: '*.xml'
-  - name: Functional Tests
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_upload_results
-    APPLICATION_NAME: ${CF_APP_NAME}
-    LIFE_CYCLE_STAGE_SELECT: fvt
-    ADDITIONAL_LIFE_CYCLE_STAGE_SELECT: none
-    LOG_FILE: ./xunit.xml
-    COMMAND: |-
-      #!/bin/bash
-      GRUNTFILE="tests/Gruntfile.js"
-      if [ -f $GRUNTFILE ]; then
-        npm install
-        echo $APP_URL | grep "stage1"
-        if [ $? -eq 0 ]; then
-          grunt test_fake --gruntfile $GRUNTFILE --base .
-        else
-          grunt test_real --gruntfile $GRUNTFILE --base .
-        fi
-      else
-        echo "$GRUNTFILE not found."
-      fi
 - name: PRODUCTION
   inputs:
   - type: job
