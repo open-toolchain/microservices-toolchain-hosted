@@ -43,21 +43,24 @@
                 "$ref": "#/messages/deploy.appDescription1"
             },
             "type": "string",
-            "pattern": "\\S"
+            "pattern": "\\S",
+            "maxLength": 63
         },
         "catalog-app-name": {
             "description": {
                 "$ref": "#/messages/deploy.appDescription2"
             },
             "type": "string",
-            "pattern": "\\S"
+            "pattern": "\\S",
+            "maxLength": 63
         },
         "ui-app-name": {
             "description": {
                 "$ref": "#/messages/deploy.appDescription3"
             },
             "type": "string",
-            "pattern": "\\S"
+            "pattern": "\\S",
+            "maxLength": 63
         }
     },
     "required": [
