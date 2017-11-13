@@ -366,7 +366,7 @@
 <text id="headerSVG.saucelabs1" transform="matrix(1 0 0 1 409.35 666.2999)" class="st34 st35">SAUCE LABS</text>
 <text id="headerSVG.saucelabs2" transform="matrix(1 0 0 1 409.35 766.3)" class="st34 st35">SAUCE LABS</text>
 <text id="headerSVG.saucelabs3" transform="matrix(1 0 0 1 409.35 868.3)" class="st34 st35">SAUCE LABS</text>
-<text id="headerSVG.bluemix" transform="matrix(1 0 0 1 502.35 766.3)" class="st34 st35">BLUEMIX</text>
+<text id="headerSVG.ibmCloud" transform="matrix(1 0 0 1 502.35 766.3)" class="st34 st35">IBM Cloud</text>
 <text id="headerSVG.repository2" transform="matrix(1 0 0 1 240.35 766.3)" class="st34 st35">REPOSITORY</text>
 <text id="headerSVG.repository3" transform="matrix(1 0 0 1 240.35 868.3)" class="st34 st35">REPOSITORY</text>
 <text id="headerSVG.webIde" transform="matrix(1 0 0 1 248.35 970.3)" class="st34 st35">WEB IDE</text>
