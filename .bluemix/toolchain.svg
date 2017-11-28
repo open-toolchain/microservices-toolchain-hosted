@@ -37,7 +37,7 @@
 	.st31{fill:#030506;}
 	.st32{fill:#3D4747;}
 	.st33{fill:#64BC46;}
-	.st34{font-family:'Arial-BoldMT';}
+	.st34{font-family:'Arial'; font-weight: bold}
 	.st35{font-size:12px;}
 	.st36{fill:#3B4B54;}
 	.st37{fill:#0883A5;}
