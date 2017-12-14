@@ -7,13 +7,6 @@ stages:
     service: ${ORDER_API_REPO}
   triggers:
   - type: commit
-  properties:
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
   jobs:
   - name: Build
     type: builder
@@ -43,15 +36,6 @@ stages:
     type: text
   - name: PORT
     value: '80'
-    type: text
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: STAGING
     type: text
   jobs:
   - name: Deploy
@@ -101,7 +85,6 @@ stages:
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v4.2/bin:$PATH
         npm install
-        npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
           grunt test_fake --gruntfile $GRUNTFILE --base .
@@ -110,8 +93,6 @@ stages:
           grunt test_real --gruntfile $GRUNTFILE --base .
           grunt_result=$?
         fi
-
-        idra --publishtestresult --filelocation=./xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -135,20 +116,7 @@ stages:
   - name: APP_URL
     value: undefined
     type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: PRODUCTION
-    type: text
   jobs:
-  - name: Production Gate
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: PRODUCTION Deployment Checks (func test only)
   - name: Blue/Green Deploy
     type: deployer
     target:

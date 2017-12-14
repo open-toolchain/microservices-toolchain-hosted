@@ -7,13 +7,6 @@ stages:
     service: ${CATALOG_API_REPO}
   triggers:
   - type: commit
-  properties:
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
   jobs:
   - name: Build
     type: builder
@@ -31,15 +24,11 @@ stages:
         export PATH=/opt/IBM/node-v4.2/bin:$PATH
         npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
         npm install
-        npm install -g grunt-idra3
 
         set +e
         grunt dev-test-cov --no-color --gruntfile $GRUNTFILE --base .
         grunt_result=$?
         set -e
-
-        idra --publishtestresult --filelocation=./tests/server/mochatest.xml --type=unittest
-        idra --publishtestresult --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -67,15 +56,6 @@ stages:
   - name: SAUCE_ACCESS_KEY
     value: {{services.test.parameters.key}}
     type: text
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: STAGING
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
   - name: HOST
     value: ondemand.saucelabs.com
     type: text
@@ -83,10 +63,6 @@ stages:
     value: '80'
     type: text
   jobs:
-  - name: Staging Gate
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: STAGING Deployment Checks
   - name: Deploy
     type: deployer
     target:
@@ -134,7 +110,6 @@ stages:
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v4.2/bin:$PATH
         npm install
-        npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
           grunt test_fake --gruntfile $GRUNTFILE --base .
@@ -143,8 +118,6 @@ stages:
           grunt test_real --gruntfile $GRUNTFILE --base .
           grunt_result=$?
         fi
-
-        idra --publishtestresult --filelocation=./xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -165,20 +138,7 @@ stages:
   - name: CF_APP_NAME
     value: undefined
     type: text
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: PRODUCTION
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
   jobs:
-  - name: Production Gate
-    type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: PRODUCTION Deployment Checks
   - name: Blue/Green Deploy
     type: deployer
     target:
