@@ -19,7 +19,7 @@ template:
     git url: >-
       [https://github.com/open-toolchain/microservices-toolchain-hosted](https://github.com/open-toolchain/microservices-toolchain-hosted)
     git branch: >-
-      [master](https://github.com/open-toolchain/microservices-toolchain-hosted/tree/master)
+      [public-eu-gb](https://github.com/open-toolchain/microservices-toolchain-hosted/tree/public-eu-gb)
 toolchain:
   template:
     getting_started:
