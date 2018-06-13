@@ -22,7 +22,7 @@ github.longDescription: "Utilizzando i repository e Issue Tracking ospitati da I
 github.sourceRepository: "Repository di origine"
 github.targetRepository: "Repository di destinazione"
 headerSVG.think: "PENSA"
-headerSVG.code: "CODE"
+headerSVG.code: "CODIFICA"
 headerSVG.deliver: "DISTRIBUISCI"
 headerSVG.run: "ESEGUI"
 headerSVG.learn: "IMPARA"
