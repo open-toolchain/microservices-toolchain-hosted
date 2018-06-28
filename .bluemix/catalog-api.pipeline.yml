@@ -94,6 +94,7 @@ stages:
       organization: ${STAGING_ORG_NAME}
       space: ${STAGING_SPACE_NAME}
       application: ${CF_APP_NAME}
+      api_key: ${API_KEY}
     script: |
       #!/bin/bash
       SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
