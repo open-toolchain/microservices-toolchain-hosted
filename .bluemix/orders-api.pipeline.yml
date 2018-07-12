@@ -53,6 +53,9 @@ stages:
   - name: LOGICAL_ENV_NAME
     value: STAGING
     type: text
+  - name: IBM_CLOUD_API_KEY
+    value: ${INSIGHTS_API_KEY}
+    type: text
   jobs:
   - name: Deploy
     type: deployer
@@ -144,6 +147,9 @@ stages:
     type: text
   - name: LOGICAL_ENV_NAME
     value: PRODUCTION
+    type: text
+  - name: IBM_CLOUD_API_KEY
+    value: ${INSIGHTS_API_KEY}
     type: text
   jobs:
   - name: Production Gate
