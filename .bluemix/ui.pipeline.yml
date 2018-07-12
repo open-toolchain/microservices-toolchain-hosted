@@ -60,12 +60,13 @@ stages:
       organization: ${STAGING_ORG_NAME}
       space: ${STAGING_SPACE_NAME}
       application: ${CF_APP_NAME}
+      api_key: ${API_KEY}
     script: |-
       #!/bin/bash
       # Push app
       export CF_APP_NAME="staging-$CF_APP"
       cf push "${CF_APP_NAME}"
-      export APP_URL=http://$(cf app $CF_APP_NAME | grep urls: | awk '{print $2}')      
+      export APP_URL=http://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')      
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
   - name: Sauce Labs Tests
@@ -140,6 +141,7 @@ stages:
       organization: ${PROD_ORG_NAME}
       space: ${PROD_SPACE_NAME}
       application: ${CF_APP_NAME}
+      api_key: ${API_KEY}
     script: |-
       #!/bin/bash
       if ! cf app $CF_APP; then
