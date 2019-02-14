@@ -76,7 +76,7 @@ stages:
     type: text
   - name: SAUCE_ACCESS_KEY
     value: {{services.test.parameters.key}}
-    type: text
+    type: secure
   - name: LOGICAL_APP_NAME
     value: ${CF_APP_NAME}
     type: text
