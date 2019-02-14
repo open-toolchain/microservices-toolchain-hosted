@@ -40,7 +40,6 @@ stages:
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
-        npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
         npm install
         npm install -g grunt-idra3
 
@@ -159,6 +158,7 @@ stages:
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+        npm install
         npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
