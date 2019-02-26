@@ -16,10 +16,18 @@ stages:
     type: text
   - name: IBM_CLOUD_API_KEY
     value: ${INSIGHTS_API_KEY}
-    type: text
+    type: secure
   jobs:
   - name: Build
     type: builder
+    artifact_dir: ''
+    build_type: shell
+    script: |-
+      #!/bin/bash
+      export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+      npm install
+      npm install -g grunt-idra3
+      idra --publishbuildrecord --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
   - name: Unit Tests
     type: tester
     enable_tests: true
@@ -31,8 +39,7 @@ stages:
       #!/bin/bash
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
-        export PATH=/opt/IBM/node-v4.2/bin:$PATH
-        npm install -g npm@3.7.2 ### work around default npm 2.1.1 instability
+        export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
         npm install
         npm install -g grunt-idra3
 
@@ -69,7 +76,7 @@ stages:
     type: text
   - name: SAUCE_ACCESS_KEY
     value: {{services.test.parameters.key}}
-    type: text
+    type: secure
   - name: LOGICAL_APP_NAME
     value: ${CF_APP_NAME}
     type: text
@@ -87,7 +94,7 @@ stages:
     type: text
   - name: IBM_CLOUD_API_KEY
     value: ${INSIGHTS_API_KEY}
-    type: text
+    type: secure
   jobs:
   - name: Staging Gate
     type: tester
@@ -103,6 +110,8 @@ stages:
       api_key: ${API_KEY}
     script: |
       #!/bin/bash
+      export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+
       SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
       if [ ! -z "$SERVICE" ]; then
         PLAN=$(echo $SERVICE | awk '{print $3}')
@@ -121,9 +130,18 @@ stages:
       # Push app
       export CF_APP_NAME="staging-$CF_APP"
       cf push "${CF_APP_NAME}"
-      export APP_URL=http://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')      
+      push_result=$?
+      export APP_URL=https://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')      
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
+
+      deploy_status="pass"
+      if [ $push_result -ne 0 ]; then
+         deploy_status="fail"
+      fi
+      npm install -g grunt-idra3
+      idra --publishdeployrecord  --env=$LOGICAL_ENV_NAME --status=$deploy_status --appurl=$APP_URL
+
   - name: Sauce Labs Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.saucelabs
@@ -139,7 +157,7 @@ stages:
       #!/bin/bash
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
-        export PATH=/opt/IBM/node-v4.2/bin:$PATH
+        export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
         npm install
         npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
@@ -183,7 +201,7 @@ stages:
     type: text
   - name: IBM_CLOUD_API_KEY
     value: ${INSIGHTS_API_KEY}
-    type: text
+    type: secure
   jobs:
   - name: Production Gate
     type: tester
@@ -199,6 +217,8 @@ stages:
       api_key: ${API_KEY}
     script: |-
       #!/bin/bash
+      export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+
       SERVICE=$(cf services | grep myMicroservicesCloudant ||:)
       if [ ! -z "$SERVICE" ]; then
         PLAN=$(echo $SERVICE | awk '{print $3}')
@@ -233,3 +253,12 @@ stages:
         cf push $CF_APP
         cf delete $OLD_CF_APP -f
       fi
+
+      push_result=$?
+      export APP_URL=https://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
+      deploy_status="pass"
+      if [ $push_result -ne 0 ]; then
+         deploy_status="fail"
+      fi
+      npm install -g grunt-idra3
+      idra --publishdeployrecord  --env=$LOGICAL_ENV_NAME --status=$deploy_status --appurl=$APP_URL
