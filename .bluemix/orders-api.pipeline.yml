@@ -158,7 +158,7 @@ stages:
 
         ibmcloud plugin install doi
         ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-        ibmcloud doi publishtestrecord --filelocation=../xunit.xml --type=fvt
+        ibmcloud doi publishtestrecord --filelocation=./xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result

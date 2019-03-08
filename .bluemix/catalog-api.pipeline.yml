@@ -64,7 +64,7 @@ stages:
         ibmcloud plugin install doi
         ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
         ibmcloud doi publishtestrecord --filelocation=./tests/server/mochatest.xml --type=unittest
-        ibmcloud doi publishtestrecord --filelocation=../tests/server/coverage/reports/coverage-summary.json --type=code
+        ibmcloud doi publishtestrecord --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
         
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -208,7 +208,7 @@ stages:
 
         ibmcloud plugin install doi
         ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-        ibmcloud doi publishtestrecord --filelocation=../xunit.xml --type=fvt
+        ibmcloud doi publishtestrecord --filelocation=./xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
