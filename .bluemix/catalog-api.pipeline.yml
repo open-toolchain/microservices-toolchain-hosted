@@ -26,8 +26,16 @@ stages:
       #!/bin/bash
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
       npm install
-      npm install -g grunt-idra3
-      idra --publishbuildrecord --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
+
+      # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+      export match=`echo $IDS_URL | grep stage`
+      if [ $match ]; then
+          ibmcloud api test.cloud.ibm.com
+      fi
+
+      ibmcloud plugin install doi
+      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+      ibmcloud doi publishbuildrecord --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
   - name: Unit Tests
     type: tester
     enable_tests: true
@@ -41,16 +49,23 @@ stages:
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
         npm install
-        npm install -g grunt-idra3
 
         set +e
         grunt dev-test-cov --no-color --gruntfile $GRUNTFILE --base .
         grunt_result=$?
         set -e
 
-        idra --publishtestresult --filelocation=./tests/server/mochatest.xml --type=unittest
-        idra --publishtestresult --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
+        # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+        export match=`echo $IDS_URL | grep stage`
+        if [ $match ]; then
+            ibmcloud api test.cloud.ibm.com
+        fi
 
+        ibmcloud plugin install doi
+        ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+        ibmcloud doi publishtestrecord --filelocation=./tests/server/mochatest.xml --type=unittest
+        ibmcloud doi publishtestrecord --filelocation=../tests/server/coverage/reports/coverage-summary.json --type=code
+        
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
         fi
@@ -98,8 +113,18 @@ stages:
   jobs:
   - name: Staging Gate
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: STAGING Deployment Checks
+    script: |-
+      #!/bin/bash
+
+      # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+      export match=`echo $IDS_URL | grep stage`
+      if [ $match ]; then
+         ibmcloud api test.cloud.ibm.com
+      fi
+
+      ibmcloud plugin install doi
+      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+      ibmcloud doi evaluategate --policy "STAGING Deployment Checks" --forcedecision
   - name: Deploy
     type: deployer
     target:
@@ -139,9 +164,16 @@ stages:
       if [ $push_result -ne 0 ]; then
          deploy_status="fail"
       fi
-      npm install -g grunt-idra3
-      idra --publishdeployrecord  --env=$LOGICAL_ENV_NAME --status=$deploy_status --appurl=$APP_URL
 
+      # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+      export match=`echo $IDS_URL | grep stage`
+      if [ $match ]; then
+          ibmcloud api test.cloud.ibm.com
+      fi
+
+      ibmcloud plugin install doi
+      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+      ibmcloud doi publishdeployrecord --env=$LOGICAL_ENV_NAME --status=$deploy_status --joburl=$APP_URL
   - name: Sauce Labs Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.saucelabs
@@ -159,7 +191,6 @@ stages:
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
         npm install
-        npm install -g grunt-idra3
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
           grunt test_fake --gruntfile $GRUNTFILE --base .
@@ -169,7 +200,15 @@ stages:
           grunt_result=$?
         fi
 
-        idra --publishtestresult --filelocation=./xunit.xml --type=fvt
+        # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+        export match=`echo $IDS_URL | grep stage`
+        if [ $match ]; then
+            ibmcloud api test.cloud.ibm.com
+        fi
+
+        ibmcloud plugin install doi
+        ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+        ibmcloud doi publishtestrecord --filelocation=../xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -205,8 +244,18 @@ stages:
   jobs:
   - name: Production Gate
     type: tester
-    extension_id: ibm.devops.services.pipeline.dra_devops_gate
-    CRITERIA: PRODUCTION Deployment Checks
+    script: |-
+      #!/bin/bash
+
+      # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+      export match=`echo $IDS_URL | grep stage`
+      if [ $match ]; then
+         ibmcloud api test.cloud.ibm.com
+      fi
+
+      ibmcloud plugin install doi
+      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+      ibmcloud doi evaluategate --policy "PRODUCTION Deployment Checks" --forcedecision
   - name: Blue/Green Deploy
     type: deployer
     target:
@@ -260,5 +309,13 @@ stages:
       if [ $push_result -ne 0 ]; then
          deploy_status="fail"
       fi
-      npm install -g grunt-idra3
-      idra --publishdeployrecord  --env=$LOGICAL_ENV_NAME --status=$deploy_status --appurl=$APP_URL
+
+      # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
+      export match=`echo $IDS_URL | grep stage`
+      if [ $match ]; then
+          ibmcloud api test.cloud.ibm.com
+      fi
+
+      ibmcloud plugin install doi
+      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+      ibmcloud doi publishdeployrecord --env=$LOGICAL_ENV_NAME --status=$deploy_status --joburl=$APP_URL
