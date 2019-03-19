@@ -67,7 +67,8 @@ stages:
       #!/bin/bash
       GRUNTFILE="tests/Gruntfile.js"
       if [ -f $GRUNTFILE ]; then
-        export PATH=/opt/IBM/node-v4.2/bin:$PATH
+        npm install -g grunt@0.4.5 grunt-cli@0.1.13
+        export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
         npm install
         echo $APP_URL | grep "stage1"
         if [ $? -eq 0 ]; then
