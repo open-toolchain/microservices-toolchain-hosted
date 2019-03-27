@@ -215,7 +215,7 @@ properties:
   value: ${INSIGHTS_API_KEY}
   type: secure
 - name: MY_APP_NAME
-  value: ${LOGICAL_APP_NAME}
+  value: ${CF_APP_NAME}
   type: text
 - name: buildProperties
   value: build.properties
