@@ -33,7 +33,7 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi
+      ibmcloud plugin install doi -f -v 0.0.6
       ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
       ibmcloud doi publishbuildrecord --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
   - name: Unit Tests
@@ -61,7 +61,7 @@ stages:
             ibmcloud api test.cloud.ibm.com
         fi
 
-        ibmcloud plugin install doi
+        ibmcloud plugin install doi -f -v 0.0.6
         ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
         ibmcloud doi publishtestrecord --filelocation=./tests/server/mochatest.xml --type=unittest
         ibmcloud doi publishtestrecord --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
@@ -122,7 +122,7 @@ stages:
          ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi
+      ibmcloud plugin install doi -f -v 0.0.6
       ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
       ibmcloud doi evaluategate --policy "STAGING Deployment Checks" --forcedecision
   - name: Deploy
@@ -171,7 +171,7 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi
+      ibmcloud plugin install doi -f -v 0.0.6
       ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
       ibmcloud doi publishdeployrecord --env=$LOGICAL_ENV_NAME --status=$deploy_status --joburl=$APP_URL
   - name: Sauce Labs Tests
@@ -179,10 +179,6 @@ stages:
     extension_id: ibm.devops.services.pipeline.saucelabs
     services:
       - ${SAUCE_LABS}
-    target:
-      region_id: ${STAGING_REGION_ID}
-      organization: ${STAGING_ORG_NAME}
-      space: ${STAGING_SPACE_NAME}
     DL_ASSETS: 'false'
     SELECT_CMD: custom
     COMMAND: |-
@@ -206,7 +202,7 @@ stages:
             ibmcloud api test.cloud.ibm.com
         fi
 
-        ibmcloud plugin install doi
+        ibmcloud plugin install doi -f -v 0.0.6
         ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
         ibmcloud doi publishtestrecord --filelocation=./xunit.xml --type=fvt
 
@@ -253,7 +249,7 @@ stages:
          ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi
+      ibmcloud plugin install doi -f -v 0.0.6
       ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
       ibmcloud doi evaluategate --policy "PRODUCTION Deployment Checks" --forcedecision
   - name: Blue/Green Deploy
@@ -316,6 +312,6 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi
+      ibmcloud plugin install doi -f -v 0.0.6
       ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
       ibmcloud doi publishdeployrecord --env=$LOGICAL_ENV_NAME --status=$deploy_status --joburl=$APP_URL
