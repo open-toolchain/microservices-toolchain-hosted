@@ -8,15 +8,9 @@ stages:
   triggers:
   - type: commit
   properties:
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
+  - name: MY_BUILD_NUMBER
+    value: $GIT_BRANCH:$BUILD_NUMBER
     type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
-  - name: IBM_CLOUD_API_KEY
-    value: ${INSIGHTS_API_KEY}
-    type: secure
   jobs:
   - name: Build
     type: builder
@@ -33,9 +27,11 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f -v 0.0.6
-      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-      ibmcloud doi publishbuildrecord --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
+      echo "MY_BUILD_NUMBER=${MY_BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
+
+      ibmcloud plugin install doi -f
+      ibmcloud login --apikey $API_KEY --no-region
+      ibmcloud doi publishbuildrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
   - name: Unit Tests
     type: tester
     enable_tests: true
@@ -61,10 +57,10 @@ stages:
             ibmcloud api test.cloud.ibm.com
         fi
 
-        ibmcloud plugin install doi -f -v 0.0.6
-        ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-        ibmcloud doi publishtestrecord --filelocation=./tests/server/mochatest.xml --type=unittest
-        ibmcloud doi publishtestrecord --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
+        ibmcloud plugin install doi -f
+        ibmcloud login --apikey $API_KEY --no-region
+        ibmcloud doi publishtestrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --filelocation=./tests/server/mochatest.xml --type=unittest
+        ibmcloud doi publishtestrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --filelocation=./tests/server/coverage/reports/coverage-summary.json --type=code
         
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -92,24 +88,12 @@ stages:
   - name: SAUCE_ACCESS_KEY
     value: {{services.test.parameters.key}}
     type: secure
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: STAGING
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
   - name: HOST
     value: ondemand.saucelabs.com
     type: text
   - name: PORT
     value: '80'
     type: text
-  - name: IBM_CLOUD_API_KEY
-    value: ${INSIGHTS_API_KEY}
-    type: secure
   jobs:
   - name: Staging Gate
     type: tester
@@ -122,9 +106,9 @@ stages:
          ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f -v 0.0.6
-      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-      ibmcloud doi evaluategate --policy "STAGING Deployment Checks" --forcedecision
+      ibmcloud plugin install doi -f
+      ibmcloud login --apikey $API_KEY --no-region
+      ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "STAGING Deployment Checks" --forcedecision
   - name: Deploy
     type: deployer
     target:
@@ -171,9 +155,9 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f -v 0.0.6
-      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-      ibmcloud doi publishdeployrecord --env=$LOGICAL_ENV_NAME --status=$deploy_status --joburl=$APP_URL
+      ibmcloud plugin install doi -f
+      ibmcloud login --apikey $API_KEY --no-region
+      ibmcloud doi publishdeployrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --env=STAGING --status=$deploy_status --joburl=$APP_URL
   - name: Sauce Labs Tests
     type: tester
     extension_id: ibm.devops.services.pipeline.saucelabs
@@ -202,9 +186,9 @@ stages:
             ibmcloud api test.cloud.ibm.com
         fi
 
-        ibmcloud plugin install doi -f -v 0.0.6
-        ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-        ibmcloud doi publishtestrecord --filelocation=./xunit.xml --type=fvt
+        ibmcloud plugin install doi -f
+        ibmcloud login --apikey $API_KEY --no-region
+        ibmcloud doi publishtestrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --filelocation=./xunit.xml --type=fvt
 
         if [ $grunt_result -ne 0 ]; then
            exit $grunt_result
@@ -225,18 +209,6 @@ stages:
   - name: CF_APP_NAME
     value: undefined
     type: text
-  - name: LOGICAL_APP_NAME
-    value: ${CF_APP_NAME}
-    type: text
-  - name: LOGICAL_ENV_NAME
-    value: PRODUCTION
-    type: text
-  - name: BUILD_PREFIX
-    value: master
-    type: text
-  - name: IBM_CLOUD_API_KEY
-    value: ${INSIGHTS_API_KEY}
-    type: secure
   jobs:
   - name: Production Gate
     type: tester
@@ -249,9 +221,9 @@ stages:
          ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f -v 0.0.6
-      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-      ibmcloud doi evaluategate --policy "PRODUCTION Deployment Checks" --forcedecision
+      ibmcloud plugin install doi -f
+      ibmcloud login --apikey $API_KEY --no-region
+      ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "PRODUCTION Deployment Checks" --forcedecision
   - name: Blue/Green Deploy
     type: deployer
     target:
@@ -312,6 +284,16 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f -v 0.0.6
-      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-      ibmcloud doi publishdeployrecord --env=$LOGICAL_ENV_NAME --status=$deploy_status --joburl=$APP_URL
+      ibmcloud plugin install doi -f
+      ibmcloud login --apikey $API_KEY --no-region
+      ibmcloud doi publishdeployrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --env=PRODUCTION --status=$deploy_status --joburl=$APP_URL
+properties:
+- name: API_KEY
+  value: ${INSIGHTS_API_KEY}
+  type: secure
+- name: MY_APP_NAME
+  value: ${CF_APP_NAME}
+  type: text
+- name: buildProperties
+  value: build.properties
+  type: file
