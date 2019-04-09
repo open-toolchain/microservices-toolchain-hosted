@@ -15,27 +15,27 @@
     "type": "object",
     "properties": {
         "staging-region": {
-            "description": "The bluemix region",
+            "description": "The IBM Cloud CF region",
             "type": "string"
         },
         "staging-organization": {
-            "description": "The bluemix org",
+            "description": "The IBM Cloud CF org",
             "type": "string"
         },
         "staging-space": {
-            "description": "The bluemix space",
+            "description": "The IBM Cloud CF space",
             "type": "string"
         },
         "prod-region": {
-            "description": "The bluemix region",
+            "description": "The IBM Cloud CF region",
             "type": "string"
         },
         "prod-organization": {
-            "description": "The bluemix org",
+            "description": "The IBM Cloud CF org",
             "type": "string"
         },
         "prod-space": {
-            "description": "The bluemix space",
+            "description": "The IBM Cloud CF space",
             "type": "string"
         },
         "api-key": {
