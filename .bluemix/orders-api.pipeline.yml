@@ -21,7 +21,7 @@ stages:
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
       
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
           ibmcloud api test.cloud.ibm.com
       fi
@@ -99,7 +99,7 @@ stages:
       fi
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
           ibmcloud api test.cloud.ibm.com
       fi
@@ -131,7 +131,7 @@ stages:
         fi
 
         # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-        export match=`echo $IDS_URL | grep stage`
+        export match=`echo $IDS_URL | grep test`
         if [ $match ]; then
             ibmcloud api test.cloud.ibm.com
         fi
@@ -169,7 +169,7 @@ stages:
       #!/bin/bash
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
          ibmcloud api test.cloud.ibm.com
       fi
@@ -233,7 +233,7 @@ stages:
       fi
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
           ibmcloud api test.cloud.ibm.com
       fi
