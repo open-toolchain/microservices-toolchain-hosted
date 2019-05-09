@@ -22,7 +22,7 @@ stages:
       npm install
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
           ibmcloud api test.cloud.ibm.com
       fi
@@ -52,7 +52,7 @@ stages:
         set -e
 
         # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-        export match=`echo $IDS_URL | grep stage`
+        export match=`echo $IDS_URL | grep test`
         if [ $match ]; then
             ibmcloud api test.cloud.ibm.com
         fi
@@ -101,7 +101,7 @@ stages:
       #!/bin/bash
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
          ibmcloud api test.cloud.ibm.com
       fi
@@ -150,7 +150,7 @@ stages:
       fi
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
           ibmcloud api test.cloud.ibm.com
       fi
@@ -171,7 +171,7 @@ stages:
       if [ -f $GRUNTFILE ]; then
         export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
         npm install
-        echo $APP_URL | grep "stage1"
+        echo $APP_URL | grep "test"
         if [ $? -eq 0 ]; then
           grunt test_fake --gruntfile $GRUNTFILE --base .
           grunt_result=$?
@@ -181,7 +181,7 @@ stages:
         fi
 
         # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-        export match=`echo $IDS_URL | grep stage`
+        export match=`echo $IDS_URL | grep test`
         if [ $match ]; then
             ibmcloud api test.cloud.ibm.com
         fi
@@ -216,7 +216,7 @@ stages:
       #!/bin/bash
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
          ibmcloud api test.cloud.ibm.com
       fi
@@ -279,7 +279,7 @@ stages:
       fi
 
       # need to set the ibmcloud api for staging env. The value defaults to cloud.ibm.com
-      export match=`echo $IDS_URL | grep stage`
+      export match=`echo $IDS_URL | grep test`
       if [ $match ]; then
           ibmcloud api test.cloud.ibm.com
       fi
