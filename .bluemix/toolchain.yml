@@ -47,6 +47,7 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
   catalog-api-repo:
     service_id: hostedgit
@@ -86,6 +87,7 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
   catalog-api-build:
     service_id: pipeline
@@ -108,6 +110,7 @@ services:
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
   orders-api-repo:
     service_id: hostedgit

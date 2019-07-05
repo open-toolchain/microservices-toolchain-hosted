@@ -15,28 +15,73 @@
     "type": "object",
     "properties": {
         "staging-region": {
-            "description": "The bluemix region",
-            "type": "string"
+            "description": {
+                "$ref": "#/messages/deploy.region"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "staging-organization": {
-            "description": "The bluemix org",
-            "type": "string"
+            "description": {
+                "$ref": "#/messages/deploy.org"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["staging-region"]
+            }
         },
         "staging-space": {
-            "description": "The bluemix space",
-            "type": "string"
+            "description": {
+                "$ref": "#/messages/deploy.space"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["staging-organization"]
+            }
         },
         "prod-region": {
-            "description": "The bluemix region",
-            "type": "string"
+            "description": {
+                "$ref": "#/messages/deploy.region"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "prod-organization": {
-            "description": "The bluemix org",
-            "type": "string"
+            "description": {
+                "$ref": "#/messages/deploy.org"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["prod-region"]
+            }
         },
         "prod-space": {
-            "description": "The bluemix space",
-            "type": "string"
+            "description": {
+                "$ref": "#/messages/deploy.space"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["prod-organization"]
+            }
+        },
+        "api-key": {
+            "description": {
+                "$ref": "#/messages/deploy.apiKeyDescription"
+            },
+            "type": "string",
+            "validator": {
+                "v-type": "api-key"
+            }
         },
         "orders-app-name": {
             "description": {
@@ -72,12 +117,12 @@
         "prod-space",
         "orders-app-name",
         "catalog-app-name",
-        "ui-app-name"
+        "ui-app-name",
+        "api-key"
     ],
-    "form": [
-        {
+    "form": [{
             "type": "validator",
-            "url": "/devops/setup/bm-helper/helper.html"
+            "url": "/devops/setup/bm-helper/validator-v1.html"
         },
         {
             "type": "text",
@@ -104,6 +149,14 @@
             "key": "ui-app-name"
         },
         {
+            "type": "password",
+            "readonly": false,
+            "title": {
+                "$ref": "#/messages/deploy.apiKeyTitle"
+            },
+            "key": "api-key"
+        },
+        {
             "type": "table",
             "columnCount": 4,
             "widths": [
@@ -112,8 +165,7 @@
                 "28%",
                 "28%"
             ],
-            "items": [
-                {
+            "items": [{
                     "type": "label",
                     "title": ""
                 },
