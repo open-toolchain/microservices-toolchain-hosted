@@ -18,43 +18,70 @@
             "description": {
                 "$ref": "#/messages/deploy.region"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "staging-organization": {
             "description": {
                 "$ref": "#/messages/deploy.org"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["staging-region"]
+            }
         },
         "staging-space": {
             "description": {
                 "$ref": "#/messages/deploy.space"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["staging-organization"]
+            }
         },
         "prod-region": {
             "description": {
                 "$ref": "#/messages/deploy.region"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-region",
+                "params": ["api-key"]
+            }
         },
         "prod-organization": {
             "description": {
                 "$ref": "#/messages/deploy.org"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-org",
+                "params": ["prod-region"]
+            }
         },
         "prod-space": {
             "description": {
                 "$ref": "#/messages/deploy.space"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "cf-space",
+                "params": ["prod-organization"]
+            }
         },
         "api-key": {
             "description": {
                 "$ref": "#/messages/deploy.apiKeyDescription"
             },
-            "type": "string"
+            "type": "string",
+            "validator": {
+                "v-type": "api-key"
+            }
         },
         "orders-app-name": {
             "description": {
@@ -93,10 +120,9 @@
         "ui-app-name",
         "api-key"
     ],
-    "form": [
-        {
+    "form": [{
             "type": "validator",
-            "url": "/devops/setup/bm-helper/helper.html"
+            "url": "/devops/setup/bm-helper/validator-v1.html"
         },
         {
             "type": "text",
@@ -123,12 +149,12 @@
             "key": "ui-app-name"
         },
         {
-	        "type": "password",
-	        "readonly": false,
-	        "title": {
+            "type": "password",
+            "readonly": false,
+            "title": {
                 "$ref": "#/messages/deploy.apiKeyTitle"
             },
-	        "key": "api-key"
+            "key": "api-key"
         },
         {
             "type": "table",
@@ -139,8 +165,7 @@
                 "28%",
                 "28%"
             ],
-            "items": [
-                {
+            "items": [{
                     "type": "label",
                     "title": ""
                 },
