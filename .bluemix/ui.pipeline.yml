@@ -74,7 +74,7 @@ stages:
       export CF_APP_NAME="staging-$CF_APP"
       cf push "${CF_APP_NAME}"
       push_result=$?
-      export APP_URL=https://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')      
+      export APP_URL=https://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
       # View logs
       #cf logs "${CF_APP_NAME}" --recent
 
@@ -212,7 +212,7 @@ stages:
       ibmcloud doi publishdeployrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --env=PRODUCTION --status=$deploy_status --joburl=$APP_URL
 properties:
 - name: API_KEY
-  value: ${INSIGHTS_API_KEY}
+  value: ${API_KEY}
   type: secure
 - name: MY_APP_NAME
   value: ${CF_APP_NAME}
