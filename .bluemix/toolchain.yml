@@ -49,7 +49,6 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-          INSIGHTS_API_KEY: '{{form.draservicebroker.parameters.iam-api-key}}'
         execute: true
   catalog-api-repo:
     service_id: hostedgit
@@ -90,7 +89,6 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-          INSIGHTS_API_KEY: '{{form.draservicebroker.parameters.iam-api-key}}'
         execute: true
   catalog-api-build:
     service_id: pipeline
@@ -114,7 +112,6 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-          INSIGHTS_API_KEY: '{{form.draservicebroker.parameters.iam-api-key}}'
         execute: true
   orders-api-repo:
     service_id: hostedgit
@@ -136,9 +133,6 @@ services:
   webide:
     service_id: orion
 form:
-  draservicebroker:
-    schema:
-      $ref: insights.json
   pipeline:
     parameters:
       staging-space: staging
