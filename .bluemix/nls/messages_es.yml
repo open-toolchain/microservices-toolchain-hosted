@@ -1,16 +1,7 @@
 ---
 template.name: "Desarrollar y probar microservicios en Cloud Foundry"
-template.description: "Con esta cadena de herramientas nativa de nube, utilice un ejemplo para crear un almacenamiento en línea que conste de tres microservicios: una API de catálogo, una API de pedidos y una IU que invoca a las dos API. La cadena de herramientas está preconfigurada para la entrega continua, el control de origen, la prueba funcional, el seguimiento de problemas, la edición en línea y la notificación de alertas.
-  
-  La API Catalog and Orders la copia el almacén de Cloudant. Como parte del despliegue de esta aplicación, se crea una instancia del servicio Cloudant sin coste. Para obtener más información y los términos, consulte el [catálogo Bluemix](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/).
-  
-  Esta cadena de herramientas utiliza herramientas que forman parte del servicio de Continuous Delivery. Si aún no hay una instancia de dicho servicio en la organización seleccionada, cuando pulse **Crear**, se añadirá automáticamente con el plan sin coste [Lite](/catalog/services/continuous-delivery/) seleccionado.
-  
-  Para comenzar, pulse **Crear**.
-  
-  Para obtener instrucciones detalladas paso a paso, siga la [guía de aprendizaje](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)."
-template.gettingStarted: "**¡Su cadena de herramientas está lista!**
-  **Inicio rápido:** Confirmar un cambio en un repositorio Git para desencadenar una nueva compilación y despliegue de uno de los microservicios. Para obtener instrucciones detalladas paso a paso, consulte la [guía de aprendizaje](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) de esta cadena de herramientas."
+template.description: "Con esta cadena de herramientas nativa de nube, utilice un ejemplo para crear un almacenamiento en línea que conste de tres microservicios: una API de catálogo, una API de pedidos y una IU que invoca a las dos API. La cadena de herramientas está preconfigurada para la entrega continua, el control de origen, la prueba funcional, el seguimiento de problemas, la edición en línea y la notificación de alertas.\n\nLas API de catálogo y pedidos las copia el almacén de Cloudant. Como parte del despliegue de esta aplicación, se crea una instancia del servicio Cloudant sin coste. Para obtener más información y los términos, consulte el [catálogo IBM Cloud](https://cloud.ibm.com/catalog/services/cloudant).\n\nEsta cadena de herramientas utiliza herramientas que forman parte del servicio de Continuous Delivery. Si aún no hay una instancia de dicho servicio en la organización o el grupo de recursos seleccionado, cuando pulse **Crear**, se añadirá automáticamente con el plan sin coste [Lite](/catalog/services/continuous-delivery/) seleccionado.\n\nPara comenzar, pulse **Crear**.\n\nPara obtener instrucciones detalladas paso a paso, siga la [guía de aprendizaje](https://www.ibm.com/cloud/garage/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)."
+template.gettingStarted: "**¡Su cadena de herramientas está lista!**\n**Inicio rápido:** Confirmar un cambio en un repositorio Git para desencadenar una nueva compilación y despliegue de uno de los microservicios. Consulte los resultados en el panel de control de Riesgo de despliegue en DevOps Insights. Para obtener instrucciones detalladas paso a paso, consulte la [guía de aprendizaje](https://www.ibm.com/cloud/garage/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) de esta cadena de herramientas."
 deploy.title: "Fase de despliegue de microservicios"
 deploy.description: "Esquema de despliegue de microservicios"
 deploy.longDescription: "Delivery Pipeline automatiza el despliegue continuo."
@@ -20,6 +11,11 @@ deploy.appName3: "Nombre de aplicación de IU"
 deploy.appDescription1: "El nombre de la aplicación de la API de pedidos"
 deploy.appDescription2: "El nombre de la aplicación de la API de catálogo"
 deploy.appDescription3: "El nombre de la aplicación de la IU que llama a las API de pedidos y de catálogo."
+deploy.apiKeyDescription: "Se necesita una clave de API para acceder a IBM Cloud Runtime. Si no tiene una, puede pulsar el botón Crear. También puede obtener una clave de API con 'ibmcloud iam api-key-create' o a través de la consola en https://cloud.ibm.com/iam#/apikeys"
+deploy.apiKeyTitle: "Clave de API de IBM Cloud"
+deploy.org: "La organización de IBM Cloud"
+deploy.space: "El espacio de IBM Cloud"
+deploy.region: "La región de IBM Cloud"
 region: "Región"
 organization: "Organización"
 space: "Espacio"
@@ -54,8 +50,3 @@ headerSVG.saucelabs3: "SAUCE LABS"
 headerSVG.pagerDuty: "PAGER DUTY"
 headerSVG.devops: "DEVOPS"
 headerSVG.insights: "INSIGHTS"
-deploy.apiKeyDescription: "Se necesita una clave de API para acceder a IBM Cloud Runtime. Si no tiene una, puede pulsar el botón Crear. También puede obtener una clave de API con 'ibmcloud iam api-key-create' o a través de la consola en https://cloud.ibm.com/iam#/apikeys"
-deploy.apiKeyTitle: "Clave de API de IBM Cloud"
-deploy.org: "La organización de IBM Cloud"
-deploy.space: "El espacio de IBM Cloud"
-deploy.region: "La región de IBM Cloud"
