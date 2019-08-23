@@ -1,7 +1,16 @@
 ---
 template.name: "Cloud Foundry 上の Microservices の開発およびテスト"
-template.description: "このクラウド・ネイティブのツールチェーンでは、3 つのマイクロサービス (Catalog API、Orders API、およびそれら両方の API を呼び出す UI) から成る、オンライン・ストアを作成するためのサンプルを使用します。このツールチェーンは、継続的デリバリー、ソース管理、機能テスト、Issue のトラッキング、オンライン編集、およびアラート通知用に事前構成されています。\n\nCatalog API と Orders API は、Cloudant ストアにサポートされています。このアプリケーションをデプロイする処理の一環として、無料の Cloudant サービス・インスタンスが作成されます。詳細および条件については、[IBM Cloud カタログ](https://cloud.ibm.com/catalog/services/cloudant) を参照してください。\n\nこのツールチェーンは、Continuous Delivery サービスに含まれるツールを使用します。そのサービスのインスタンスが、選択したリソース・グループや組織にまだない場合は、**「作成」**をクリックすると、無料の[ライト](/catalog/services/continuous-delivery/) プランが選択されてインスタンスが自動的に追加されます。\n\n開始するには、**「作成」**をクリックしてください。\n\n段階的な説明については、[チュートリアル](https://www.ibm.com/cloud/garage/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain) を参照してください。"
-template.gettingStarted: "**ツールチェーンの準備ができました。**\n**クイック・スタート:** Git リポジトリーに対する変更をコミットし、いずれかのマイクロサービスの新しいビルドおよびデプロイメントをトリガーしてください。DevOps Insights の「デプロイメント・リスク」ダッシュボードで結果を確認してください。段階的な説明については、このツールチェーンの[チュートリアル](https://www.ibm.com/cloud/garage/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) を参照してください。"
+template.description: "このクラウド・ネイティブのツールチェーンでは、3 つのマイクロサービス (Catalog API、Orders API、およびそれら両方の API を呼び出す UI) から成る、オンライン・ストアを作成するためのサンプルを使用します。このツールチェーンは、継続的デリバリー、ソース管理、機能テスト、問題のトラッキング、オンライン編集、およびアラート通知用に事前構成されています。
+  
+  Catalog API と Orders API は、Cloudant ストアにサポートされています。このアプリケーションをデプロイする処理の一環として、無料の Cloudant サービス・インスタンスが作成されます。詳細および条件については、[Bluemix カタログ](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)を参照してください。
+  
+  このツールチェーンは、Continuous Delivery サービスに含まれるツールを使用します。そのサービスのインスタンスが選択した組織にない場合は、**「作成」**をクリックすると、無料の[ライト](/catalog/services/continuous-delivery/)・プランが選択されてインスタンスが自動的に追加されます。
+  
+  開始するには、**「作成」**をクリックしてください。
+  
+  ステップバイステップの説明については、[チュートリアル](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)を参照してください。"
+template.gettingStarted: "**ツールチェーンの準備ができました。**
+  **クイック・スタート:** Git リポジトリーに対する変更をコミットし、いずれかのマイクロサービスの新しいビルドおよびデプロイメントをトリガーしてください。段階的説明については、このツールチェーンの[チュートリアル](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2)を参照してください。"
 deploy.title: "Microservices のデプロイメント・ステージ"
 deploy.description: "マイクロサービス・デプロイメント・スキーマ"
 deploy.longDescription: "Delivery Pipeline は、継続的デプロイメントを自動化します。"
@@ -11,11 +20,6 @@ deploy.appName3: "UI アプリ名"
 deploy.appDescription1: "Orders API のアプリの名前"
 deploy.appDescription2: "Catalog API のアプリの名前"
 deploy.appDescription3: "Orders API と Catalog API を呼び出す UI のアプリの名前"
-deploy.apiKeyDescription: "IBM Cloud ランタイムにアクセスするには API キーは必須です。 API キーがない場合は、「作成」ボタンをクリックしてください。 API キーは、「ibmcloud iam api-key-create」やコンソール (https://cloud.ibm.com/iam#/apikeys) を使用しても取得できます。"
-deploy.apiKeyTitle: "IBM Cloud API キー"
-deploy.org: "IBM Cloud 組織"
-deploy.space: "IBM Cloud スペース"
-deploy.region: "IBM Cloud リージョン"
 region: "リージョン"
 organization: "組織"
 space: "スペース"
@@ -23,7 +27,7 @@ prodStage: "実動ステージ"
 testStage: "テスト・ステージ"
 github.title: "Microservices のデプロイメント・ステージ"
 github.description: "マイクロサービス Git スキーマ"
-github.longDescription: "IBM がホストするリポジトリーや Issue トラッキングを使用すれば、新規の Git リポジトリーにも既存の Git リポジトリーにもソース・コードを保管できます。"
+github.longDescription: "IBM がホストするリポジトリーや問題トラッキングを使用すれば、新規の Git リポジトリーにも既存の Git リポジトリーにもソース・コードを保管できます。"
 github.sourceRepository: "ソース・リポジトリー"
 github.targetRepository: "ターゲット・リポジトリー"
 headerSVG.think: "思考"
@@ -33,7 +37,7 @@ headerSVG.run: "実行"
 headerSVG.learn: "学習"
 headerSVG.manage: "管理"
 headerSVG.culture: "養成"
-headerSVG.issueTracker: "Issue トラッカー"
+headerSVG.issueTracker: "問題トラッカー"
 headerSVG.repository1: "リポジトリー"
 headerSVG.repository2: "リポジトリー"
 headerSVG.repository3: "リポジトリー"
@@ -50,3 +54,8 @@ headerSVG.saucelabs3: "SAUCE LABS"
 headerSVG.pagerDuty: "PAGER DUTY"
 headerSVG.devops: "DEVOPS"
 headerSVG.insights: "INSIGHTS"
+deploy.apiKeyDescription: "IBM Cloud ランタイムにアクセスするには API キーは必須です。 API キーがない場合は、「作成」ボタンをクリックしてください。 API キーは、「ibmcloud iam api-key-create」やコンソール (https://cloud.ibm.com/iam#/apikeys) を使用しても取得できます。"
+deploy.apiKeyTitle: "IBM Cloud API キー"
+deploy.org: "IBM Cloud 組織"
+deploy.space: "IBM Cloud スペース"
+deploy.region: "IBM Cloud リージョン"
