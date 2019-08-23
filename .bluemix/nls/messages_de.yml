@@ -1,7 +1,16 @@
 ---
 template.name: "Microservices unter Cloud Foundry entwickeln und testen"
-template.description: "Mit dieser cloudnativen Toolchain verwenden Sie ein Beispiel für das Erstellen eines Onlinegeschäfts aus drei Microservices: einer Katalog-API, einer Bestellungs-API und einer Benutzerschnittstelle, über die beide APIs aufgerufen werden. Diese Toolchain ist für die kontinuierliche Bereitstellung, Quellcodeverwaltung, Funktionstests, Issue-Verfolgung, Onlinebearbeitung und für die Alertbenachrichtigung vorkonfiguriert.\n\nDie Katalog- und die Bestellungs-API basieren auf einem Cloudant-Speicher. Als Teil der Bereitstellung dieser Anwendung wird eine kostenlose Cloudant-Serviceinstanz erstellt. Weitere Informationen und Bedingungen finden Sie im [Bluemix-Katalog](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/).\n\nDiese Toolchain verwendet Tools, die Teil des Continuous Delivery-Service sind. Wenn sich noch keine Instanz dieses Service in der ausgewählten Organisation befindet, wird sie automatisch hinzugefügt, wenn Sie auf **Erstellen** klicken. Dabei ist der kostenlose Plan [Lite](/catalog/services/continuous-delivery/) ausgewählt.\n\nKlicken Sie auf **Erstellen**, um zu beginnen.\n\nSchrittweise Anweisungen finden Sie im [Lernprogramm](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)."
-template.gettingStarted: "**Ihre Toolchain steht bereit!**\n**Schnelleinstieg:** Schreiben Sie eine Änderung in einem Git-Repository fest, um einen neuen Build und eine neue Bereitstellung für einen der Microservices auszulösen. Schrittweise Anweisungen finden Sie im [Lernprogramm](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) für diese Toolchain."
+template.description: "Mit dieser cloudnativen Toolchain verwenden Sie ein Beispiel für das Erstellen eines Onlinegeschäfts aus drei Microservices: einer Katalog-API, einer Bestellungs-API und einer Benutzerschnittstelle, über die beide APIs aufgerufen werden. Diese Toolchain ist für die kontinuierliche Bereitstellung, Quellcodeverwaltung, Funktionstests, Issue-Verfolgung, Onlinebearbeitung und für die Alertbenachrichtigung vorkonfiguriert.
+  
+  Die Katalog- und die Bestellungs-API basieren auf einem Cloudant-Speicher. Als Teil der Bereitstellung dieser Anwendung wird eine kostenlose Cloudant-Serviceinstanz erstellt. Weitere Informationen und Bedingungen finden Sie im [Bluemix-Katalog](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/).
+  
+  Diese Toolchain verwendet Tools, die Teil des Continuous Delivery-Service sind. Wenn sich noch keine Instanz dieses Service in der ausgewählten Organisation befindet, wird sie automatisch hinzugefügt, wenn Sie auf **Erstellen** klicken. Dabei ist der kostenlose Plan [Lite](/catalog/services/continuous-delivery/) ausgewählt.
+  
+  Klicken Sie auf **Erstellen**, um zu beginnen.
+  
+  Schrittweise Anweisungen finden Sie im [Lernprogramm](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)."
+template.gettingStarted: "**Ihre Toolchain steht bereit!**
+  **Schnelleinstieg:** Schreiben Sie eine Änderung in einem Git-Repository fest, um einen neuen Build und eine neue Bereitstellung für einen der Microservices auszulösen. Schrittweise Anweisungen finden Sie im [Lernprogramm](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) für diese Toolchain."
 deploy.title: "Microservices-Entwicklungsphase"
 deploy.description: "Microservices-Bereitstellungsschema"
 deploy.longDescription: "Mit Delivery Pipeline wird die kontinuierliche Bereitstellung automatisiert."
@@ -28,7 +37,7 @@ headerSVG.run: "AUSFÜHREN"
 headerSVG.learn: "LERNEN"
 headerSVG.manage: "VERWALTEN"
 headerSVG.culture: "KULTUR"
-headerSVG.issueTracker: "PROBLEMTRACKER"
+headerSVG.issueTracker: "ISSUE-TRACKER"
 headerSVG.repository1: "REPOSITORY"
 headerSVG.repository2: "REPOSITORY"
 headerSVG.repository3: "REPOSITORY"
@@ -45,3 +54,8 @@ headerSVG.saucelabs3: "SAUCE LABS"
 headerSVG.pagerDuty: "PAGER DUTY"
 headerSVG.devops: "DEVOPS"
 headerSVG.insights: "INSIGHTS"
+deploy.apiKeyDescription: "Für den Zugriff auf IBM Cloud Runtime ist ein API-Schlüssel erforderlich. Wenn Sie keinen besitzen, können Sie auf die Schaltfläche 'Erstellen' klicken. Sie können auch mit 'ibmcloud iam api-key-create' oder über die Konsole unter https://cloud.ibm.com/iam#/apikeys einen API-Schlüssel anfordern"
+deploy.apiKeyTitle: "IBM Cloud-API-Schlüssel"
+deploy.org: "Die IBM Cloud-Organisation"
+deploy.space: "Der IBM Cloud-Bereich"
+deploy.region: "Die IBM Cloud-Region"
