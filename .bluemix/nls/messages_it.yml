@@ -1,16 +1,7 @@
 ---
 template.name: "Sviluppo e test di microservizi su Cloud Foundry"
-template.description: "Utilizzando questa toolchain nativa del cloud, viene utilizzato un esempio per creare un negozio online composto da tre microservizi: un'API Catalogo, un'API Ordini ed una IU che richiama entrambe le API. La toolchain è preconfigurata per distribuzione continua, controllo origine, esecuzione di test funzionali, traccia dei problemi, modifica online e notifica di avvisi.
-  
-  Il backup delle API Catalogo e Ordini è eseguito da un archivio Cloudant. In quanto parte della distribuzione di questa applicazione, viene creata un'istanza del servizio Cloudant gratuita. Per ulteriori informazioni e termini, consultare il [catalogo Bluemix](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/).
-  
-  Questa toolchain usa strumenti di Continuous Delivery. Se un'istanza di tale servizio non è già presente nell'organizzazione selezionata, quando si fa clic su **Crea**, viene automaticamente aggiunta al piano gratuito [Lite](/catalog/services/continuous-delivery/) selezionato.
-  
-  Per iniziare, fare clic su **Crea**.
-  
-  Per istruzioni dettagliate, consultare l'[esercitazione](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)."
-template.gettingStarted: "**La toolchain è pronta!**
-  **Avvio rapido: ** eseguire il commit di una modifica al repository Git per attivare una nuova build e distribuzione do uno dei microservizi. Per istruzioni dettagliate, consultare l'[esercitazione](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) di questa toolchain."
+template.description: "Utilizzando questa toolchain nativa del cloud, viene utilizzato un esempio per creare un negozio online composto da tre microservizi: un'API Catalogo, un'API Ordini ed una IU che richiama entrambe le API. La toolchain è preconfigurata per distribuzione continua, controllo origine, esecuzione di test funzionali, traccia dei problemi, modifica online e notifica di avvisi. \n\nIl backup delle API Catalogo e Ordini è eseguito da un archivio Cloudant. In quanto parte della distribuzione di questa applicazione, viene creata un'istanza del servizio Cloudant gratuita. Per ulteriori informazioni e termini, consultare il [catalogo Bluemix](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/). \n\nQuesta toolchain usa strumenti di Continuous Delivery. Se un'istanza di tale servizio non è già presente nell'organizzazione selezionata, quando si fa clic su **Crea**, viene automaticamente aggiunta al piano gratuito [Lite](/catalog/services/continuous-delivery/) selezionato. \n\nPer iniziare, fare clic su **Crea**. \n\nPer istruzioni dettagliate, consultare il [tutorial](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)."
+template.gettingStarted: "**La toolchain è pronta!**\n**Avvio rapido:** eseguire il commit di una modifica al repository Git per attivare una nuova build e distribuzione di uno dei microservizi. Per istruzioni dettagliate, consultare il [tutorial](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2) di questa toolchain."
 deploy.title: "Stage di sviluppo dei microservizi"
 deploy.description: "Schema di distribuzione dei microservizi"
 deploy.longDescription: "Delivery Pipeline automatizza la distribuzione continua."

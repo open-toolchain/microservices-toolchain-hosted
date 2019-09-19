@@ -1,7 +1,16 @@
-﻿---
+---
 template.name: "在 Cloud Foundry 上開發及測試微服務"
-template.description: "使用此雲端原生工具鏈，您就可以使用範例來建立由下列三個微服務所組成的線上商店：「型錄 API」、「訂單 API」及呼叫這兩個 API 的使用者介面。此工具鏈已針對 Continuous Delivery、來源控制、功能測試、問題追蹤、線上編輯及警示通知進行預先配置。\n\nCloudant 商店支援「型錄 API」及「訂單 API」。在部署此應用程式過程中，會建立免費的 Cloudant 服務實例。如需相關資訊及術語，請參閱 [Bluemix 型錄](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)。\n\n此工具鏈使用 Continuous Delivery 服務的部分工具。當您按一下**建立**時如果選取的組織中尚未具有該服務的實例，則將自動新增已搭配選取免費 [Lite](/catalog/services/continuous-delivery/) 方案的實例。\n\n若要開始，請按一下**建立**。\n\n如需逐步指示，請遵循[指導教學](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)。"
-template.gettingStarted: "**您的工具鏈已備妥！**\n**快速入門：** 確定 Git 儲存庫的變更，以觸發其中一個微服務的新建置及部署。如需逐步指示，請參閱此工具鏈的[指導教學](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2)。"
+template.description: "使用此雲端原生工具鏈，您就可以使用範例來建立由下列三個微服務所組成的線上商店：「型錄 API」、「訂單 API」及呼叫這兩個 API 的使用者介面。此工具鏈已針對 Continuous Delivery、原始碼控制、功能測試、問題追蹤、線上編輯及警示通知進行預先配置。
+  
+  Cloudant 商店支援「型錄 API」及「訂單 API」。在部署此應用程式過程中，會建立免費的 Cloudant 服務實例。如需相關資訊及條款，請參閱 [Bluemix 型錄](https://console.ng.bluemix.net/catalog/services/cloudant-nosql-db/)。
+  
+  此工具鏈使用 Continuous Delivery 服務的部分工具。當您按一下**建立**時如果選取的組織中尚未具有該服務的實例，則將自動新增已搭配選取免費 [精簡](/catalog/services/continuous-delivery/) 方案的實例。
+  
+  若要開始，請按一下**建立**。
+  
+  如需逐步指示，請遵循[指導教學](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain)。"
+template.gettingStarted: "**您的工具鏈已備妥！**
+  **快速入門：** 確定 Git 儲存庫的變更，以觸發其中一個微服務的新建置及部署。如需逐步指示，請參閱此工具鏈的[指導教學](https://www.ibm.com/devops/method/tutorials/use-develop-test-microservices-on-cloud-foundry-toolchain?task=2)。"
 deploy.title: "微服務部署階段"
 deploy.description: "微服務部署綱目"
 deploy.longDescription: "Delivery Pipeline 會自動執行連續部署。"
