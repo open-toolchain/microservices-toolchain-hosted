@@ -56,12 +56,12 @@ stages:
           echo "Note: This can fail if the service is still bound to apps or service keys."
           echo "      If so, please delete these apps or service keys explicitly first."
           cf delete-service myMicroservicesCloudant -f
-          cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
+          cf create-service cloudantNoSQLDB lite myMicroservicesCloudant
         else
           echo "Keeping existing service (myMicroservicesCloudant:$PLAN)."
         fi
       else
-        cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
+        cf create-service cloudantNoSQLDB lite myMicroservicesCloudant
       fi
       # Push app
       export CF_APP_NAME="staging-$CF_APP"
@@ -133,12 +133,12 @@ stages:
           echo "Note: This can fail if the service is still bound to apps or service keys."
           echo "      If so, please delete these apps or service keys explicitly first."
           cf delete-service myMicroservicesCloudant -f
-          cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
+          cf create-service cloudantNoSQLDB lite myMicroservicesCloudant
         else
           echo "Keeping existing service (myMicroservicesCloudant:$PLAN)."
         fi
       else
-        cf create-service cloudantNoSQLDB Lite myMicroservicesCloudant
+        cf create-service cloudantNoSQLDB lite myMicroservicesCloudant
       fi
       if ! cf app $CF_APP; then
         cf push $CF_APP
