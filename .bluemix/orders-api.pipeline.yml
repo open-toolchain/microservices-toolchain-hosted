@@ -38,8 +38,8 @@ stages:
       source <(curl -sSL "https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/fetch_git_creds.sh")
       # record Insights information
       BUILD_STATUS=pass
-      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
-      ibmcloud doi publishbuildrecord --logicalappname="$APP_NAME" --buildnumber=$BUILD_NUMBER --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=$BUILD_STATUS
+      ibmcloud login --apikey $API_KEY --no-region
+      ibmcloud doi publishbuildrecord --logicalappname="$MY_APP_NAME" --buildnumber=$BUILD_NUMBER --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=$BUILD_STATUS
   - name: Unit Tests
     type: tester
     script: |-
@@ -47,14 +47,14 @@ stages:
       # set -x
       if [ -f ./tests/run-tests.sh ]; then
         source ./tests/run-tests.sh
-        ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+        ibmcloud login --apikey $API_KEY --no-region
         IFS=';' read -ra locations <<< "$FILE_LOCATIONS"
         IFS=';' read -ra types <<< "$TEST_TYPES"
         if jq -e '.services[] | select(.service_id=="draservicebroker")' _toolchain.json; then
           for i in "${!locations[@]}"
           do
             echo "$i ${locations[i]} ${types[i]}"
-            ibmcloud doi publishtestrecord --logicalappname="$APP_NAME" --buildnumber=$BUILD_NUMBER --filelocation=${locations[i]} --type=${types[i]}
+            ibmcloud doi publishtestrecord --logicalappname="$MY_APP_NAME" --buildnumber=$BUILD_NUMBER --filelocation=${locations[i]} --type=${types[i]}
           done
           if [ $TEST_STATUS -ne 0 ]; then
             exit $TEST_STATUS
