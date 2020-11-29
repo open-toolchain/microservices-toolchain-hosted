@@ -27,10 +27,42 @@ stages:
       fi
 
       echo "MY_BUILD_NUMBER=${MY_BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
-
-      ibmcloud plugin install doi -f
-      ibmcloud login --apikey $API_KEY --no-region
-      ibmcloud doi publishbuildrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
+  - name: Fetch code
+    type: builder
+    artifact_dir: ''
+    build_type: shell
+    script: |+
+      #!/bin/bash
+      # set -x
+      cp -R -n ./ $ARCHIVE_DIR/ || true
+      source <(curl -sSL "https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/fetch_git_creds.sh")
+      # record Insights information
+      BUILD_STATUS=pass
+      ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+      ibmcloud doi publishbuildrecord --logicalappname="$APP_NAME" --buildnumber=$BUILD_NUMBER --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=$BUILD_STATUS
+  - name: Unit Tests
+    type: tester
+    script: |-
+      #!/bin/bash
+      # set -x
+      if [ -f ./tests/run-tests.sh ]; then
+        source ./tests/run-tests.sh
+        ibmcloud login --apikey $IBM_CLOUD_API_KEY --no-region
+        IFS=';' read -ra locations <<< "$FILE_LOCATIONS"
+        IFS=';' read -ra types <<< "$TEST_TYPES"
+        if jq -e '.services[] | select(.service_id=="draservicebroker")' _toolchain.json; then
+          for i in "${!locations[@]}"
+          do
+            echo "$i ${locations[i]} ${types[i]}"
+            ibmcloud doi publishtestrecord --logicalappname="$APP_NAME" --buildnumber=$BUILD_NUMBER --filelocation=${locations[i]} --type=${types[i]}
+          done
+          if [ $TEST_STATUS -ne 0 ]; then
+            exit $TEST_STATUS
+          fi
+        fi
+      else
+        echo "Test runner script not found: ./tests/run-tests.sh"
+      fi
 - name: STAGING
   inputs:
   - type: job
