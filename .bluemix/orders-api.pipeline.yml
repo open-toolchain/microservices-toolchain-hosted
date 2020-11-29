@@ -1,4 +1,8 @@
 ---
+properties:
+- name: IBM_CLOUD_API_KEY
+  value: ${API_KEY}
+  type: secure
 stages:
 - name: BUILD
   inputs:
