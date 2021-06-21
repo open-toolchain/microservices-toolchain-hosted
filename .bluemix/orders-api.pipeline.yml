@@ -1,9 +1,18 @@
 ---
+defaultBaseImageVersion: latest
+properties:
+- name: APP_REPO_BRANCH
+  value: ${APP_REPO_BRANCH}
+  type: text
+- name: COMMONS_HOSTED_REGION
+  value: ${COMMONS_HOSTED_REGION}
+  type: text
+  default: "https://raw.githubusercontent.com/open-toolchain/commons/master"
 stages:
 - name: BUILD
   inputs:
   - type: git
-    branch: master
+    branch: ${APP_REPO_BRANCH}
     service: ${ORDER_API_REPO}
   triggers:
   - type: commit
@@ -35,7 +44,7 @@ stages:
       #!/bin/bash
       # set -x
       cp -R -n ./ $ARCHIVE_DIR/ || true
-      source <(curl -sSL "https://raw.githubusercontent.com/open-toolchain/commons/master/scripts/fetch_git_creds.sh")
+      source <(curl -sSL "${COMMONS_HOSTED_REGION}/scripts/fetch_git_creds.sh")
       # record Insights information
       BUILD_STATUS=pass
       ibmcloud login --apikey $API_KEY --no-region

@@ -17,10 +17,14 @@ template:
     - ui-repo
     - dra
   info:
-    git url: >-
-      [https://github.com/open-toolchain/microservices-toolchain-hosted](https://github.com/open-toolchain/microservices-toolchain-hosted)
-    git branch: >-
-      [master](https://github.com/open-toolchain/microservices-toolchain-hosted/tree/master)
+    git url: >
+      "[" + $env.repository + "]" +
+        "(" + $env.repository + ")"
+    git branch: >
+      "[" + $env.branch + "]" +
+        "(" + $env.repository +
+          "/tree/" + $env.branch + ")"
+    hosted_region: ""
 toolchain:
   template:
     getting_started:
@@ -49,6 +53,11 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
+          COMMONS_HOSTED_REGION: >
+            $env.template.info.hosted_region !== "" ? 'https://{{template.info.hosted_region}}.git.cloud.ibm.com/open-toolchain/commons/-/raw/main':
+            'https://raw.githubusercontent.com/open-toolchain/commons/master'
+          APP_REPO_BRANCH: >
+            $env.template.info.hosted_region !== "" ? 'main': 'master'
         execute: true
   catalog-api-repo:
     service_id: hostedgit
@@ -112,6 +121,8 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
+          APP_REPO_BRANCH: >
+            $env.template.info.hosted_region !== "" ? 'main': 'master'
         execute: true
   orders-api-repo:
     service_id: hostedgit
@@ -145,10 +156,16 @@ form:
   hostedgit:
     parameters:
       catalog-api-repo_name: 'catalog-api-{{toolchain.name}}'
-      catalog-api-repo_url: 'https://github.com/open-toolchain/Microservices_CatalogAPI'
+      catalog-api-repo_url: >
+        $env.template.info.hosted_region !== "" ? 'https://{{template.info.hosted_region}}.git.cloud.ibm.com/open-toolchain/Microservices_CatalogAPI':
+        'https://github.com/open-toolchain/Microservices_CatalogAPI'
       orders-api-repo_name: 'orders-api-{{toolchain.name}}'
-      orders-api-repo_url: 'https://github.com/open-toolchain/Microservices_OrdersAPI'
+      orders-api-repo_url: >
+        $env.template.info.hosted_region !== "" ? 'https://{{template.info.hosted_region}}.git.cloud.ibm.com/open-toolchain/Microservices_OrdersAPI':
+        'https://github.com/open-toolchain/Microservices_OrdersAPI'
       ui-repo_name: 'ui-{{toolchain.name}}'
-      ui-repo_url: 'https://github.com/open-toolchain/Microservices_UI'
+      ui-repo_url: >
+        $env.template.info.hosted_region !== "" ? 'https://{{template.info.hosted_region}}.git.cloud.ibm.com/open-toolchain/Microservices_UI':
+        'https://github.com/open-toolchain/Microservices_UI'
     schema:
       $ref: repos.json
