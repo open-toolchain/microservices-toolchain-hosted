@@ -98,6 +98,8 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
+          APP_REPO_BRANCH: >
+            $env.template.info.hosted_region !== "" ? 'main': 'master'
         execute: true
   catalog-api-build:
     service_id: pipeline
