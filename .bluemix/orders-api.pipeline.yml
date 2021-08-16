@@ -1,13 +1,5 @@
 ---
 defaultBaseImageVersion: latest
-properties:
-- name: APP_REPO_BRANCH
-  value: ${APP_REPO_BRANCH}
-  type: text
-- name: COMMONS_HOSTED_REGION
-  value: ${COMMONS_HOSTED_REGION}
-  type: text
-  default: "https://raw.githubusercontent.com/open-toolchain/commons/master"
 stages:
 - name: BUILD
   inputs:
@@ -293,3 +285,10 @@ properties:
 - name: buildProperties
   value: build.properties
   type: file
+- name: APP_REPO_BRANCH
+  value: ${APP_REPO_BRANCH}
+  type: text
+- name: COMMONS_HOSTED_REGION
+  value: ${COMMONS_HOSTED_REGION}
+  type: text
+  default: "https://raw.githubusercontent.com/open-toolchain/commons/master"
