@@ -29,7 +29,6 @@ stages:
 
       echo "MY_BUILD_NUMBER=${MY_BUILD_NUMBER}" >> $ARCHIVE_DIR/build.properties
 
-      ibmcloud plugin install doi -f
       ibmcloud login --apikey $API_KEY --no-region
       ibmcloud doi publishbuildrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --branch=$GIT_BRANCH --repositoryurl=$GIT_URL --commitid=$GIT_COMMIT --status=pass
 - name: STAGING
@@ -90,7 +89,6 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f
       ibmcloud login --apikey $API_KEY --no-region
       ibmcloud doi publishdeployrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --env=STAGING --status=$deploy_status --joburl=$APP_URL
   - name: Sauce Labs Tests
@@ -123,7 +121,6 @@ stages:
             ibmcloud api test.cloud.ibm.com
         fi
 
-        ibmcloud plugin install doi -f
         ibmcloud login --apikey $API_KEY --no-region
         ibmcloud doi publishtestrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --filelocation=./xunit.xml --type=fvt
 
@@ -161,7 +158,6 @@ stages:
          ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f
       ibmcloud login --apikey $API_KEY --no-region
       ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "PRODUCTION Deployment Checks (func test only)" --forcedecision
   - name: Blue/Green Deploy
@@ -210,7 +206,6 @@ stages:
           ibmcloud api test.cloud.ibm.com
       fi
 
-      ibmcloud plugin install doi -f
       ibmcloud login --apikey $API_KEY --no-region
       ibmcloud doi publishdeployrecord --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --env=PRODUCTION --status=$deploy_status --joburl=$APP_URL
 properties:
