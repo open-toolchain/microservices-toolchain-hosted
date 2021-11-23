@@ -72,11 +72,11 @@ stages:
 
       # Push app
       export CF_APP_NAME="staging-$CF_APP"
-      cf push "${CF_APP_NAME}"
+      cf push "$CF_APP_NAME"
       push_result=$?
       export APP_URL=https://$(cf app $CF_APP_NAME | grep -e urls: -e routes: | awk '{print $2}')
       # View logs
-      #cf logs "${CF_APP_NAME}" --recent
+      #cf logs "$CF_APP_NAME" --recent
 
       deploy_status="pass"
       if [ $push_result -ne 0 ]; then
