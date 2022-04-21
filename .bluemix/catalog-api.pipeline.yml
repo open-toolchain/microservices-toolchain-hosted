@@ -107,7 +107,7 @@ stages:
       fi
 
       ibmcloud login --apikey $API_KEY --no-region
-      ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "STAGING Deployment Checks" --forcedecision
+      #ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "STAGING Deployment Checks" --forcedecision
   - name: Deploy
     type: deployer
     target:
@@ -221,7 +221,7 @@ stages:
       fi
 
       ibmcloud login --apikey $API_KEY --no-region
-      ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "PRODUCTION Deployment Checks" --forcedecision
+      #ibmcloud doi evaluategate --logicalappname="$MY_APP_NAME" --buildnumber=$MY_BUILD_NUMBER --policy "PRODUCTION Deployment Checks" --forcedecision
   - name: Blue/Green Deploy
     type: deployer
     target:
