@@ -126,8 +126,6 @@ services:
     service_id: slack
   test:
     service_id: saucelabs
-  webide:
-    service_id: orion
 form:
   pipeline:
     parameters:

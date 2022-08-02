@@ -60,25 +60,6 @@
 	<rect id="canvas_background" x="120" y="536.2" class="st0" width="582" height="402"/>
 </g>
 <title>Layer 1</title>
-<g id="svg_1">
-	<circle id="svg_2" class="st1" cx="272.5" cy="930.3" r="26.5"/>
-	<path id="XMLID_17_" class="st2" d="M282,945.3h-19.2c-2.8,0-5-2.3-5-5v-19.6c0-2.8,2.3-5,5-5H282c2.8,0,5,2.3,5,4.9v19.6
-		C287,943,284.8,945.3,282,945.3z"/>
-	<circle id="XMLID_16_" class="st3" cx="281.2" cy="923.8" r="2.8"/>
-	<circle id="XMLID_15_" class="st3" cx="277.2" cy="930.7" r="2.8"/>
-	<circle id="XMLID_14_" class="st3" cx="273.2" cy="937.5" r="2.8"/>
-	<path id="XMLID_13_" class="st4" d="M273.1,933.3h-0.4c-0.2,0-0.3-0.1-0.3-0.3v-4.9c0-0.2,0.1-0.3,0.3-0.3h0.4
-		c0.2,0,0.3,0.1,0.3,0.3v4.8C273.5,933.1,273.3,933.3,273.1,933.3z"/>
-	<path id="XMLID_3_" class="st4" d="M285.4,927.8L285.4,927.8c-0.3,0-0.5,0.2-0.5,0.5v3.1l-2.6-3.4l0,0l-0.1-0.1l0,0h-0.1H282l0,0
-		l0,0h-0.1l0,0c-0.2,0.1-0.3,0.2-0.4,0.4c0,0,0,0,0,0.1l0,0v4.4c0,0.3,0.2,0.5,0.5,0.5l0,0c0.3,0,0.5-0.2,0.5-0.5v-2.9l2.6,3.3
-		c0.1,0.1,0.1,0.1,0.2,0.2l0,0h0.1l0,0l0,0h0.1l0,0c0.2,0,0.4-0.3,0.4-0.5v-4.6C285.9,928,285.7,927.8,285.4,927.8L285.4,927.8z"/>
-	<path id="XMLID_9_" class="st4" d="M262.9,925.1c-2.2,0-4,1.9-4,4.3s1.8,4.3,4,4.3s3.9-2,3.9-4.3S265.1,925.1,262.9,925.1z
-		 M262.9,932.8c-1.8,0-3.2-1.5-3.2-3.4s1.4-3.5,3.2-3.5s3.2,1.5,3.2,3.5S264.6,932.8,262.9,932.8z"/>
-	<path id="XMLID_8_" class="st4" d="M271,929.5v-0.2c0-0.8-0.7-1.5-1.5-1.5h-0.1h-1.1l0,0c-0.3,0-0.5,0.2-0.5,0.5v4.4
-		c0,0.3,0.2,0.5,0.5,0.5l0,0c0.3,0,0.5-0.2,0.5-0.5v-1.3l1.2,1.6c0.2,0.2,0.5,0.3,0.7,0.1l0,0c0.2-0.2,0.3-0.5,0.1-0.7l-1-1.4
-		C270.5,930.8,271,930.3,271,929.5L271,929.5z M270.2,929.5c0,0.4-0.3,0.8-0.8,0.8h-0.6l0,0v-1.6h0.6
-		C269.8,928.5,270.2,929,270.2,929.5L270.2,929.5L270.2,929.5z"/>
-</g>
 <circle id="svg_3" class="st1" cx="164.8" cy="623.7" r="26.5"/>
 <circle id="svg_4" class="st1" cx="272.7" cy="623.9" r="26.5"/>
 <circle id="svg_5" class="st1" cx="273.1" cy="725" r="26.5"/>
@@ -187,7 +168,6 @@
 	</g>
 </g>
 <line id="svg_171" class="st9" x1="272.7" y1="795.1" x2="272.7" y2="771.2"/>
-<line id="svg_182" class="st9" x1="272.6" y1="895.8" x2="272.6" y2="873.8"/>
 <path id="svg_192_2_" class="st9" d="M656.2,592.2"/>
 <polyline id="svg_192_1_" class="st9" points="694.1,590 694.1,579.2 656.2,579.2 "/>
 <g id="svg_193">
@@ -369,7 +349,6 @@
 <text id="headerSVG.ibmCloud" transform="matrix(1 0 0 1 502.35 766.3)" class="st34 st35">IBM Cloud</text>
 <text id="headerSVG.repository2" transform="matrix(1 0 0 1 240.35 766.3)" class="st34 st35">REPOSITORY</text>
 <text id="headerSVG.repository3" transform="matrix(1 0 0 1 240.35 868.3)" class="st34 st35">REPOSITORY</text>
-<text id="headerSVG.webIde" transform="matrix(1 0 0 1 248.35 970.3)" class="st34 st35">WEB IDE</text>
 <text id="headerSVG.slack" transform="matrix(1.0228 0 0 1 760.9434 665.3004)" class="st34 st35">SLACK</text>
 <text id="headerSVG.pagerDuty" transform="matrix(1.0228 0 0 1 662.5674 665.3004)" class="st34 st35">PAGER DUTY</text>
 <text id="headerSVG.devops" transform="matrix(1 0 0 1 584.35 666.2999)" class="st34 st35">DEVOPS</text>
