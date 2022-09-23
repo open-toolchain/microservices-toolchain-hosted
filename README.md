@@ -1,3 +1,5 @@
+# This template has been deprecated and is no longer supported.
+
 # Develop and test microservices on Cloud Foundry
 
 ### Continuously deliver a microservices app with IBM hosted repos and issue tracking
